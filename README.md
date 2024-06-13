@@ -23,6 +23,7 @@ A loose collection of algorithms inspired by C++ Ranges, Thrust, APL/BQN, Lisp, 
 - gather (i.e. index operator[] in APL)
 - scatter
 - grade
+- map
 
 # TODO
 - scan (with an easier interface)
