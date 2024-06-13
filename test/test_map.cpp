@@ -2,6 +2,7 @@
 #include <functional>
 #include "../src/meta/global_datatypes.hpp"
 #include "../src/iota.hpp"
+#include "../src/functional.hpp"
 #include "../src/map.hpp"
 #include "../src/reverse.hpp"
 
@@ -62,6 +63,16 @@ TEST(map, vector_scalar)
 TEST(map, vector_vector)
 {
     vi32 result = nv::map(nv::iota(3), std::plus<int>{}, nv::reverse(nv::iota(3)));
+
+    ASSERT_EQ(size(result), 3);
+    EXPECT_EQ(result[0], 2);
+    EXPECT_EQ(result[1], 2);
+    EXPECT_EQ(result[2], 2);
+}
+
+TEST(map, tag_vector_vector)
+{
+    vi32 result = nv::map(nv::iota(3), meta::Plus{}, nv::reverse(nv::iota(3)));
 
     ASSERT_EQ(size(result), 3);
     EXPECT_EQ(result[0], 2);

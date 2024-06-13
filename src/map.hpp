@@ -2,6 +2,8 @@
 
 #include <algorithm>
 #include <vector>
+#include "functional_tags.hpp"
+#include "functional_dispatch.hpp"
 #include "size.hpp"
 
 namespace nv {
@@ -39,5 +41,19 @@ auto map(std::vector<T> const& left, BinaryOp op, std::vector<T> const& right) -
     return result;
 }
 
+template <typename T, typename BinaryOp>
+auto map(std::vector<T> const& left, meta::Tag<BinaryOp> tag, std::vector<T> const& right) -> std::vector<decltype(meta::dispatch(*(static_cast<const BinaryOp*>(&tag)), T{})(T{}, T{}))>
+{
+    assert(size(left) == size(right));
+    std::vector<T> result(size(left));
+    std::transform(left.cbegin(), left.cend(), right.cbegin(), result.begin(), meta::dispatch(*(static_cast<const BinaryOp*>(&tag)), T{}));
+    return result;
 }
 
+}
+
+namespace xpr {
+
+// TODO
+
+}

@@ -1,4 +1,6 @@
 #include <gtest/gtest.h>
+#include "../src/functional_dispatch.hpp"
+#include "../src/functional_xpr.hpp"
 #include "../src/functional.hpp"
 
 namespace {
