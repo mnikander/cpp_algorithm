@@ -13,7 +13,7 @@ TEST(rotate, nothing)
 
 TEST(rotate, one)
 {
-    vi32 result = rotate(iota(1));
+    vi32 result = rotate(iota(1), 1);
     EXPECT_EQ(size(result), 1);
     EXPECT_EQ(result[0], 0);
 }
@@ -42,13 +42,13 @@ TEST(rotate_last, two_of_five)
 
 TEST(rotate, all)
 {
-    vi32 result = rotate(iota(5));
+    vi32 result = rotate(iota(5), 5);
     EXPECT_EQ(size(result), 5);
-    EXPECT_EQ(result[0], 4);
-    EXPECT_EQ(result[1], 3);
+    EXPECT_EQ(result[0], 0);
+    EXPECT_EQ(result[1], 1);
     EXPECT_EQ(result[2], 2);
-    EXPECT_EQ(result[3], 1);
-    EXPECT_EQ(result[4], 0);
+    EXPECT_EQ(result[3], 3);
+    EXPECT_EQ(result[4], 4);
 }
 
 }
