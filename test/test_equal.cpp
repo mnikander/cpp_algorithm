@@ -46,7 +46,7 @@ TEST(equal, predicate)
 {
     vi32 l = nv::iota(1);
     vi32 r = {0};
-    const bool b = nv::equal(l, r, std::equal_to<int>{});
+    const bool b = nv::equal(l, std::equal_to<int>{}, r);
     EXPECT_TRUE(b);
 }
 
@@ -55,9 +55,12 @@ TEST(equal, predicate_int_float)
     constexpr f32 epsilon = 0.000001F;
     vi32 l = {0};
     vf32 r = {epsilon};
-    const bool b = nv::equal(l, r, [epsilon](int i, float f){
+    auto feq = [epsilon](int i, float f)
+    {
         const float fi = static_cast<float>(i);
-        return (f - epsilon <= fi) && (fi <= f + epsilon); });
+        return (f - epsilon <= fi) && (fi <= f + epsilon);
+    };
+    const bool b = nv::equal(l, feq, r);
     EXPECT_TRUE(b);
 }
 
@@ -71,8 +74,8 @@ TEST(equal, xpr)
 
 TEST(equal, xpr_lambda)
 {
-    b8 t = vi32{0,1} | xpr::equal(vi32{0,1}, [](int l, int r) { return l == r; });
-    b8 f = vi32{0,0} | xpr::equal(vi32{0,1}, [](int l, int r) { return l == r; });
+    b8 t = vi32{0,1} | xpr::equal([](int l, int r) { return l == r; }, vi32{0,1});
+    b8 f = vi32{0,0} | xpr::equal([](int l, int r) { return l == r; }, vi32{0,1});
     EXPECT_TRUE(t);
     EXPECT_FALSE(f);
 }

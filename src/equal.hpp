@@ -14,8 +14,8 @@ bool equal(std::vector<T> const& left, std::vector<U> const& right)
     return std::equal(left.cbegin(), left.cend(), right.cbegin(), right.cend());
 }
 
-template<typename T, typename U, typename BinaryPred>
-bool equal(std::vector<T> const& left, std::vector<U> const& right, BinaryPred op)
+template<typename T, typename BinaryPred, typename U>
+bool equal(std::vector<T> const& left, BinaryPred op, std::vector<U> const& right)
 {
     return std::equal(left.cbegin(), left.cend(), right.cbegin(), right.cend(), op);
 }
@@ -25,15 +25,15 @@ bool equal(std::vector<T> const& left, std::vector<U> const& right, BinaryPred o
 namespace xpr {
 
 // functors
-template <typename T, typename BinaryPred>
-struct EqualPred : Expression<EqualPred<T, BinaryPred>>
+template <typename BinaryPred, typename T>
+struct EqualPred : Expression<EqualPred<BinaryPred, T>>
 {
-    EqualPred(std::vector<T> const& right, BinaryPred pred) : _right{right}, _pred{pred} {}
+    EqualPred(BinaryPred pred, std::vector<T> const& right) : _pred{pred}, _right{right} {}
 
-    bool operator()(std::vector<T> const& left) const { return nv::equal(left, _right, _pred); }
+    bool operator()(std::vector<T> const& left) const { return nv::equal(left, _pred, _right); }
 
-    std::vector<T> const _right;
     BinaryPred const _pred;
+    std::vector<T> const _right;
 };
 
 template <typename T>
@@ -47,10 +47,10 @@ struct EqualSimple : Expression<EqualSimple<T>>
 };
 
 // overloaded functions to retrieve the correct Functor
-template <typename T, typename BinaryPred>
-EqualPred<T, BinaryPred> equal(std::vector<T> const& right, BinaryPred pred)
+template <typename BinaryPred, typename T>
+EqualPred<BinaryPred, T> equal(BinaryPred pred, std::vector<T> const& right)
 {
-    return EqualPred<T, BinaryPred>{right, pred};
+    return EqualPred<BinaryPred, T>{pred, right};
 }
 
 template <typename T>
