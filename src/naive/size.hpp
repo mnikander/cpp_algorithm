@@ -6,9 +6,9 @@
 namespace naive {
 
 template<typename T>
-i64 size(std::vector<T> const& v)
+i32 size(std::vector<T> const& v)
 {
-    return static_cast<i64>(v.size());
+    return static_cast<i32>(v.size());
 }
 
 }
