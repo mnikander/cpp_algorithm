@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <vector>
+#include "expression.hpp"
 
 namespace nv {
 
@@ -12,5 +13,15 @@ std::vector<T> reverse(std::vector<T> v)
     std::reverse(result.begin(), result.end());
     return result;
 }
+
+}
+
+namespace xpr {
+
+struct reverse : Expression<reverse>
+{
+    template <typename T>
+    std::vector<int> operator()(std::vector<T> const& v) const { return nv::reverse(v); }
+};
 
 }

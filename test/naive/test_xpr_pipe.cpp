@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
-#include "../../src/pipe/size.hpp"
-#include "../../src/pipe/reverse.hpp"
+#include "../../src/naive/size.hpp"
+#include "../../src/naive/reverse.hpp"
 #include "../../src/datatype_aliases.hpp"
 
 namespace {
