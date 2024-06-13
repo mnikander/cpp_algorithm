@@ -10,9 +10,9 @@ namespace meta {
 
 // usage example for implementation 2
 template<typename Range>
-auto doStuff2(Range const& range) -> decltype(result<bool>(range)) // this notation is less familiar to me
+auto doStuff2(Range const& range) -> decltype(makeContainer<bool>(range)) // this notation is less familiar to me
 {
-    return result<bool>(range);
+    return makeContainer<bool>(range);
 }
 
 TEST(result, vector2)
@@ -33,7 +33,7 @@ TEST(result, array2)
 template<typename Range>
 typename ResultTraits<bool, Range>::Type doStuff3(Range const& range)                   // very compact
 {
-    return result<bool>(range);
+    return makeContainer<bool>(range);
 }
 
 TEST(result, vector3)
