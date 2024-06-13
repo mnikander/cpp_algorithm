@@ -18,4 +18,16 @@ std::vector<T> drop(std::vector<T> const& v, int count)
     return result;
 }
 
+
+template<typename T>
+std::vector<T> drop_last(std::vector<T> const& v, int count)
+{
+    assert(0 <= count);
+    assert(count <= size(v));
+
+    std::vector<T> result(size(v) - count);
+    std::copy(v.cbegin(), v.cend() - count, result.begin());
+    return result;
+}
+
 }
