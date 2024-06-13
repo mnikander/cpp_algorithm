@@ -11,7 +11,10 @@ A loose collection of algorithms inspired by C++ Ranges, Thrust, APL/BQN, Haskel
 7. cmake --build out/ # out-of-source build
 8. ./out/unit_tests
 
-# APL and Thrust algorithms
+# Algorithms
+
+Naive implementations of several useful algorithms are available.
+These are designed for ease-of-use, but are hard-coded to std::vector and do copy-by-value, which makes them slow.
 
 ## Creation and insertion
 - iota
@@ -31,6 +34,9 @@ A loose collection of algorithms inspired by C++ Ranges, Thrust, APL/BQN, Haskel
 - filter        (C++: copy_if)
 - grade
 
+## Element retrieval
+- 
+
 ## Computation
 - reduce
 - map           (C++: transform)
@@ -46,9 +52,12 @@ A loose collection of algorithms inspired by C++ Ranges, Thrust, APL/BQN, Haskel
 - rank
 
 # TODO
-- find
-- contains
 - front / back
+- find
+- at / get (?) -- do I want to follow the C++ convention of checking bounds, or just use it as a synonym for operator[]?
+- something to search for the largest/smallest etc element
+- contains
+- slice / stencil
 - inner product (similar to std::transform_reduce)
 - scan
 - sort
