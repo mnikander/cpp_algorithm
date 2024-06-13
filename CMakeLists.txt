@@ -16,6 +16,7 @@ add_executable(unit_tests test/main.cpp
                           test/test_drop.cpp
                           test/test_equal.cpp
                           test/test_filter.cpp
+                          test/test_functional.cpp
                           test/test_gather.cpp
                           test/test_grade.cpp
                           test/test_iota.cpp
