@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include "../src/iota.hpp"
 #include "../src/take.hpp"
-#include "../src/datatype_aliases.hpp"
+#include "../src/meta/datatype_aliases.hpp"
 
 namespace {
 

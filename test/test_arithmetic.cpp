@@ -2,7 +2,7 @@
 #include "../src/arithmetic.hpp"
 #include "../src/iota.hpp"
 #include "../src/repeat.hpp"
-#include "../src/datatype_aliases.hpp"
+#include "../src/meta/datatype_aliases.hpp"
 
 namespace {
 

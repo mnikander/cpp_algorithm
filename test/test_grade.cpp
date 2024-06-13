@@ -6,7 +6,7 @@
 #include "../src/gather.hpp"
 #include "../src/grade.hpp"
 #include "../src/size.hpp"
-#include "../src/datatype_aliases.hpp"
+#include "../src/meta/datatype_aliases.hpp"
 
 namespace {
 

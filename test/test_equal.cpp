@@ -3,7 +3,7 @@
 #include "../src/equal.hpp"
 #include "../src/iota.hpp"
 #include "../src/size.hpp"
-#include "../src/datatype_aliases.hpp"
+#include "../src/meta/datatype_aliases.hpp"
 
 namespace {
 
