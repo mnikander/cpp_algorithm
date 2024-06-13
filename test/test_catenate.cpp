@@ -55,7 +55,7 @@ TEST(catenate, element_element)
     EXPECT_EQ(result[1], 42);
 }
 
-TEST(catenate, xpx_vector_vector)
+TEST(catenate, xpr_vector_vector)
 {
     vi32 result = vi32{0, 1, 2} | xpr::catenate(vi32{2, 1, 0});
     ASSERT_EQ(size(result), 6);
