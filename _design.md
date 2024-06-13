@@ -2,6 +2,21 @@
 - hard-code to std::vector to simplify all interfaces
 - implement the first version with hard-copies -- use views and expression templates in a later version
 
+# Scope of the pipe operator
+
+I will support the following:
+- vector | f(vector)
+- vector | f(scalar)
+- scalar | f(vector)
+
+I will NOT support:
+- scalar | f(scalar)
+
+The latter runs into problems because `operator|` is already defined for many primitive types.
+I would have to disambiguate it somehow, perhaps by difining a scalar _class_ of my own.
+Who knows what that would do for performance.
+Supporting (scalar, scalar) would also force me to provide expression versions of everything in my functional header,which would be a lot of work.
+
 # Tensor support
 How do I want to support tensors? Some options:
 
@@ -28,48 +43,6 @@ How do I want to support tensors? Some options:
 Do I want to make all data immutable, like the functional languages and BQN do it? With views and expression templates this could still be fine from a performance standpoint. Alternatively I could let the programmer decide what he wants.
 
 # Naming and capabilities of arithmetic, trigonometric, and boolean operations
-
-### Unary functions
-- id : identity                        ( ??? )
-- neg: negate                          (available in functional)
-- not: not                             (available in functional)
-- sqrt: square root
-- crt: cube root
-- exp | exp_e: exponential e
-- exp_2:       exponential 2
-- exp_10:      exponential 10
-- log | log_e: logarithm e
-- log_2:       logarithm 2
-- log_10:      logarithm 10
-- sin:  sine
-- asin: arcus_sine
-- cos:  cosine
-- acos: arcus_cosine
-- tan:  tangent
-- atan: arcus_tangent
-- abs:  absolute
-- ceil: ceiling
-- floor: floor
-- round: round
-
-### Binary functions
-
-- add: add, addition, plus             (available in functional)
-- sub: subtract, subtraction, minus    (available in functional)
-- mul: multiply, multiplication, times (available in functional)
-- div: divide, division                (available in functional)
-- mod: modulo, remainder               (available in functional)
-- eq : equal, equality                 (available in functional)
-- neq: not-equal, unequal, inequality  (available in functional)
-- max: maximum / or
-- min: minimum / and
-- gcd: greatest common divisor / or
-- lcm: lowest common multiple / and
-- le : less                            (available in functional)
-- leq: less_equal                      (available in functional)
-- gr : greater                         (available in functional)
-- geq: greater_equal                   (available in functional)
-- pow: power
 
 Once I have `each`, `any`, `all`, and `none` with their full overload sets I will not need to overload any arithmetic operations for vector input. Unfortunately, the _functional_ header is some stuff, so I will have to implement my own if I want consistent namespaces, naming, and the ability to consistently plug them all into algorithms such as map.
 

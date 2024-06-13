@@ -93,18 +93,26 @@ It does allow playing around with the algorithms early on, and are a first step 
 
 ## Arithmetic and boolean functions
 
+### Nilary functions
+- e  -- a bit short for a function name, it could collide with all sorts of stuff, maybe `constant_e`?
+- pi -- less likely, but might collide with stuff as well, maybe `constant_pi`?
+
+Or make a namespace `math` which contains them as constexpr values, i.e. `math::pi` and `math::e`
+
 ### Unary functions
 - id : identity                        ( ??? )
 - neg: negate                          (available in functional)
 - not: not                             (available in functional)
 - sqrt: square root
 - crt: cube root
-- exp | exp_e: exponential e
+- exp | exp_e: exponential e -- maybe with a default value of 1 so it's easy to get 'e'
 - exp_2:       exponential 2
 - exp_10:      exponential 10
 - log | log_e: logarithm e
 - log_2:       logarithm 2
 - log_10:      logarithm 10
+- deg: degree
+- rad: radian
 - sin:  sine
 - asin: arcus_sine
 - cos:  cosine
