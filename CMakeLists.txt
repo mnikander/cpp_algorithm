@@ -31,3 +31,6 @@ add_executable(unit_tests test/main.cpp
                           test/test_xpr_pipe.cpp
 )
 target_link_libraries(unit_tests ${GTEST_LIBRARIES} pthread)
+
+add_executable(main src/_main.cpp)
+target_include_directories(main PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
