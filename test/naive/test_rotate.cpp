@@ -18,7 +18,7 @@ TEST(rotate, one)
     EXPECT_EQ(result[0], 0);
 }
 
-TEST(rotate, fivePositive)
+TEST(rotate, two_of_five)
 {
     vi32 result = rotate(iota(5), 2);
     EXPECT_EQ(size(result), 5);
@@ -29,9 +29,9 @@ TEST(rotate, fivePositive)
     EXPECT_EQ(result[4], 1);
 }
 
-TEST(rotate, fiveNegative)
+TEST(rotate_last, two_of_five)
 {
-    vi32 result = rotate(iota(5), -2);
+    vi32 result = rotate_last(iota(5), 2);
     EXPECT_EQ(size(result), 5);
     EXPECT_EQ(result[0], 3);
     EXPECT_EQ(result[1], 4);
@@ -40,7 +40,7 @@ TEST(rotate, fiveNegative)
     EXPECT_EQ(result[4], 2);
 }
 
-TEST(rotate, fiveReverse)
+TEST(rotate, all)
 {
     vi32 result = rotate(iota(5));
     EXPECT_EQ(size(result), 5);

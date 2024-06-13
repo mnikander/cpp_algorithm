@@ -11,18 +11,11 @@ namespace naive {
 template<typename T>
 std::vector<T> rotate(std::vector<T> const& v, int count)
 {
-    assert(-size(v) <= count);
+    assert(0 <= count);
     assert(count <= size(v));
 
     std::vector<T> result(v);
-    if(count >= 0)
-    {
-        std::rotate(result.begin(), result.begin() + count, result.end());
-    }
-    else
-    {
-        std::rotate(result.rbegin(), result.rbegin() + (-count), result.rend());
-    }
+    std::rotate(result.begin(), result.begin() + count, result.end());
     return result;
 }
 
@@ -30,6 +23,17 @@ template<typename T>
 std::vector<T> rotate(std::vector<T> const& v) // no count
 {
     return reverse(v);
+}
+
+template<typename T>
+std::vector<T> rotate_last(std::vector<T> const& v, int count)
+{
+    assert(0 <= count);
+    assert(count <= size(v));
+
+    std::vector<T> result(v);
+    std::rotate(result.rbegin(), result.rbegin() + count, result.rend());
+    return result;
 }
 
 }
