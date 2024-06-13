@@ -53,24 +53,50 @@ It does allow playing around with the algorithms early on, and are a first step 
 - map              (C++: transform)
 
 ## Comparison
-- any, all, none   (APL: match)
-
-## Arithmetic
-- plus
+- any
+- all              (APL: match)
+- none
 
 ## Properties
 - size             (APL: tally)
 - rank
 
+## Arithmetic and boolean functions
+
+### Unary functions
+- logical_not
+- identity
+- negate
+
+### Binary functions
+- logical_and
+- logical_or
+- plus
+- minus
+- multiply
+- divide
+- modulo (is actually 'remainder')
+- power
+- minimum
+- maximum
+- equal
+- not_equal
+- less
+- less_equal
+- greater
+- greater_equal
+- least_common_multiple
+- greatest_common_divisor
+
 # TODO
 - find
 - contains
+- scan
 - something to search for the largest/smallest etc element
 - front / back
 - at / get -- with and without bounds checking respectively (C++ convention 'at')
 - slice / stencil
 - inner_product / map_reduce
-- scan -- pick one, maybe the inclusive scan
 - sort
 
 ## Arithmetic and boolean functions
@@ -82,9 +108,6 @@ It does allow playing around with the algorithms early on, and are a first step 
 Or make a namespace `math` which contains them as constexpr values, i.e. `math::pi` and `math::e`
 
 ### Unary functions
-- id : identity                        ( ??? )
-- neg: negate                          (available in functional)
-- not: not                             (available in functional)
 - sqrt: square root
 - crt: cube root
 - exp | exp_e: exponential e -- maybe with a default value of 1 so it's easy to get 'e'
@@ -105,25 +128,6 @@ Or make a namespace `math` which contains them as constexpr values, i.e. `math::
 - ceil: ceiling
 - floor: floor
 - round: round
-
-### Binary functions
-
-- add: add, addition, plus             (available in functional)
-- sub: subtract, subtraction, minus    (available in functional)
-- mul: multiply, multiplication, times (available in functional)
-- div: divide, division                (available in functional)
-- mod: modulo, remainder               (available in functional)
-- eq : equal, equality                 (available in functional)
-- neq: not-equal, unequal, inequality  (available in functional)
-- max: maximum / or
-- min: minimum / and
-- gcd: greatest common divisor / or
-- lcm: lowest common multiple / and
-- le : less                            (available in functional)
-- leq: less_equal                      (available in functional)
-- gr : greater                         (available in functional)
-- geq: greater_equal                   (available in functional)
-- pow: power
 
 ## Future work on sequences
 - take_while
