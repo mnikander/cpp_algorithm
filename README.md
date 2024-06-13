@@ -5,9 +5,11 @@ A loose collection of algorithms inspired by C++ Ranges, Thrust, APL/BQN, Lisp, 
 1. Clone the repo
 2. cd cpp_algorithm
 3. mkdir out
-4. cmake out/
-5. cmake --build out/ # out-of-source build
-6. ./out/unit_tests
+4. cd out
+5. cmake ..
+6. cd ..
+7. cmake --build out/ # out-of-source build
+8. ./out/unit_tests
 
 # APL and Thrust algorithms
 - iota (std::iota)
