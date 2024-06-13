@@ -15,7 +15,7 @@ TEST(catenate, nothing)
     ASSERT_EQ(size(result), 0);
 }
 
-TEST(catenate, palindrome)
+TEST(catenate, vector_vector)
 {
     vi32 result = nv::catenate(nv::iota(3), nv::reverse(nv::iota(3)));
     ASSERT_EQ(size(result), 6);
@@ -27,28 +27,32 @@ TEST(catenate, palindrome)
     EXPECT_EQ(result[5], 0);
 }
 
-TEST(catenate, element_left)
+TEST(catenate, vector_element)
 {
-    vi32 result = nv::catenate(42, nv::iota(5));
-    ASSERT_EQ(nv::size(result), 6);
+    vi32 result = nv::catenate(nv::iota(3), 42);
+    ASSERT_EQ(nv::size(result), 4);
+    EXPECT_EQ(result[0], 0);
+    EXPECT_EQ(result[1], 1);
+    EXPECT_EQ(result[2], 2);
+    EXPECT_EQ(result[3], 42);
+}
+
+TEST(catenate, element_vector)
+{
+    vi32 result = nv::catenate(42, nv::iota(3));
+    ASSERT_EQ(nv::size(result), 4);
     EXPECT_EQ(result[0], 42);
     EXPECT_EQ(result[1], 0);
     EXPECT_EQ(result[2], 1);
     EXPECT_EQ(result[3], 2);
-    EXPECT_EQ(result[4], 3);
-    EXPECT_EQ(result[5], 4);
 }
 
-TEST(catenate, element_right)
+TEST(catenate, element_element)
 {
-    vi32 result = nv::catenate(nv::iota(5), 42);
-    ASSERT_EQ(nv::size(result), 6);
-    EXPECT_EQ(result[0], 0);
-    EXPECT_EQ(result[1], 1);
-    EXPECT_EQ(result[2], 2);
-    EXPECT_EQ(result[3], 3);
-    EXPECT_EQ(result[4], 4);
-    EXPECT_EQ(result[5], 42);
+    vi32 result = nv::catenate(13, 42);
+    ASSERT_EQ(nv::size(result), 2);
+    EXPECT_EQ(result[0], 13);
+    EXPECT_EQ(result[1], 42);
 }
 
 }

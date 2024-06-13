@@ -33,4 +33,10 @@ std::vector<T> catenate(std::vector<T> const& left, T const& right)
     return result;
 }
 
+template<typename T>
+std::vector<T> catenate(T const& left, T const& right)
+{
+    return std::vector<T>{left, right};
+}
+
 }
