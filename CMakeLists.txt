@@ -14,6 +14,7 @@ add_executable(unit_tests test/main.cpp
                           test/naive/test_arithmetic.cpp
                           test/naive/test_catenate.cpp
                           test/naive/test_drop.cpp
+                          test/naive/test_filter.cpp
                           test/naive/test_gather.cpp
                           test/naive/test_grade.cpp
                           test/naive/test_iota.cpp

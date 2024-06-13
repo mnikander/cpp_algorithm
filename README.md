@@ -23,29 +23,42 @@ A loose collection of algorithms inspired by C++ Ranges, Thrust, APL/BQN, Lisp, 
 - gather (i.e. index operator[] in APL)
 - scatter
 - grade
+- filter
 - map
 
 # TODO
+- take_last, drop_last
+- catenate individual element -- or just let the coder put curly braces around it, instead of providing an extra overload? the overload would be better for performance though
 - inner product (std::transform_reduce)
 - scan (with an easier interface)
+- any, all, none
 - match (equal)
 - not match
 - not
+- front / back
+- find
+- contains
 - greatest common divisor / or
 - lowest common multiple / and
 - alternating reduction for minus and division (or some way of doing this)
 - encode
 - decode
 - zip
+- zip with next
 - roll
 - deal
 - binomial
 - factorial
-- union (?) -- using DSU perhaps?
+- union (?) -- using DSU perhaps, or a hashmap
 - difference (?)
 - intersection (?)
+- group by (returns a map of lists)
+- chunk (returns list of lists)
+- reduce (init = first element) vs. fold (manually specify init)
 
 # TODO: Tensor algorithms for rank > 1
+- flatten
+- stencil
 - transpose
 - outer product
 - reshape
