@@ -50,9 +50,10 @@ It does allow playing around with the algorithms early on, and are a first step 
 
 ## Computation
 - reduce
+- map              (C++: transform)
 
 ## Comparison
-
+- any, all, none   (APL: match)
 
 ## Arithmetic
 - plus
@@ -62,21 +63,6 @@ It does allow playing around with the algorithms early on, and are a first step 
 - rank
 
 # TODO
-- map              (C++: transform)
-    - for element-wise (arithmetic) operations
-    - map: (vector, op)         -> vector
-    - map: (vector, op, vector) -> vector
-    - map: (vector, op, scalar) -> vector
-    - map: (scalar, op, vector) -> vector
-    - map: (scalar, op, scalar) -> scalar
-- any, all, none   (APL: match)
-    - check predicates on elements from one or two sequences
-    - early exit behavior (does NOT use reduce!)
-    - {any, all, none}: (vector, pred)         -> bool
-    - {any, all, none}: (vector, pred, vector) -> bool
-    - {any, all, none}: (vector, pred, scalar) -> bool
-    - {any, all, none}: (scalar, pred, vector) -> bool
-    - {any, all, none}: (scalar, pred, scalar) -> bool
 - find
 - contains
 - something to search for the largest/smallest etc element
