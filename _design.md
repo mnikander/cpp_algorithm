@@ -8,14 +8,12 @@ I will support the following:
 - vector | f(vector)
 - vector | f(scalar)
 - scalar | f(vector)
-
-I will NOT support:
 - scalar | f(scalar)
 
-The latter runs into problems because `operator|` is already defined for many primitive types.
-I would have to disambiguate it somehow, perhaps by difining a scalar _class_ of my own.
-Who knows what that would do for performance.
-Supporting (scalar, scalar) would also force me to provide expression versions of everything in my functional header,which would be a lot of work.
+I will NOT support:
+
+The latter might run into problems because `operator|` is already defined for many primitive types.
+If that happens, I would have to disambiguate it somehow, perhaps by difining a scalar _class_ of my own.
 
 # Tensor support
 How do I want to support tensors? Some options:

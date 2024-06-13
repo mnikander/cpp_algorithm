@@ -14,15 +14,17 @@ set(SOURCES src/functional.cpp)
 add_executable(unit_tests ${SOURCES}
                           test/main.cpp
                           test/meta/test_result.cpp
+                          test/test_all.cpp
+                          test/test_any.cpp
                           test/test_catenate.cpp
                           test/test_drop.cpp
-                          test/test_equal.cpp
                           test/test_filter.cpp
                           test/test_functional.cpp
                           test/test_gather.cpp
                           test/test_grade.cpp
                           test/test_iota.cpp
                           test/test_map.cpp
+                          test/test_none.cpp
                           test/test_reduce.cpp
                           test/test_repeat.cpp
                           test/test_reverse.cpp

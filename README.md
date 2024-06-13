@@ -29,7 +29,7 @@ It does allow playing around with the algorithms early on, and are a first step 
 
 ## Creation and insertion
 - iota
-- repeat        (C++: fill)
+- repeat           (C++: fill)
 - catenate
 
 ## Element retrieval
@@ -43,53 +43,49 @@ It does allow playing around with the algorithms early on, and are a first step 
 - take_last
 - drop
 - drop_last
-- gather        (APL: postfix-operator [])
+- gather           (APL: postfix-operator [])
 - scatter
-- filter        (C++: copy_if)
+- filter           (C++: copy_if)
 - grade
 
 ## Computation
 - reduce
-- map           (C++: transform)
 
 ## Comparison
-- equal         (APL: match)
+
 
 ## Arithmetic
 - plus
 
 ## Properties
-- size          (APL: tally)
+- size             (APL: tally)
 - rank
 
 # TODO
-- each / map -- for element-wise (arithmetic) operations
-    - return vector
-    - binary overloads of each replace `nv::plus` -- adapt the code from there :)
-    - each(vector, op) -- replaces `nv::map`
-    - each(vector, op, scalar)
-    - each(vector, op, vector)
-    - each(scalar, op, vector)
-- any, all, none
-    - return boolean
-    - all replaces `nv::equal` -- adapt the code from there :)
-    - early exit behavior (do NOT use reduce!)
-    - {any, all, none}(vector, pred)
-    - {any, all, none}(vector, pred, scalar)
-    - {any, all, none}(vector, pred, vector)
-    - {any, all, none}(scalar, pred, vector)
+- map              (C++: transform)
+    - for element-wise (arithmetic) operations
+    - map: (vector, op)         -> vector
+    - map: (vector, op, vector) -> vector
+    - map: (vector, op, scalar) -> vector
+    - map: (scalar, op, vector) -> vector
+    - map: (scalar, op, scalar) -> scalar
+- any, all, none   (APL: match)
+    - check predicates on elements from one or two sequences
+    - early exit behavior (does NOT use reduce!)
+    - {any, all, none}: (vector, pred)         -> bool
+    - {any, all, none}: (vector, pred, vector) -> bool
+    - {any, all, none}: (vector, pred, scalar) -> bool
+    - {any, all, none}: (scalar, pred, vector) -> bool
+    - {any, all, none}: (scalar, pred, scalar) -> bool
 - find
+- contains
 - something to search for the largest/smallest etc element
 - front / back
 - at / get -- with and without bounds checking respectively (C++ convention 'at')
-- contains
 - slice / stencil
 - inner_product / map_reduce
 - scan -- pick one, maybe the inclusive scan
 - sort
-- any
-- all
-- none
 
 ## Arithmetic and boolean functions
 
