@@ -12,13 +12,13 @@ TEST(catenate, nothing)
     vi32 l{};
     vi32 r{};
     vi32 result = catenate(l,r);
-    EXPECT_EQ(result.size(), 0);
+    EXPECT_EQ(size(result), 0);
 }
 
 TEST(catenate, palindrome)
 {
     vi32 result = catenate(iota(3), reverse(iota(3)));
-    EXPECT_EQ(result.size(), 6);
+    EXPECT_EQ(size(result), 6);
     EXPECT_EQ(result[0], 0);
     EXPECT_EQ(result[1], 1);
     EXPECT_EQ(result[2], 2);

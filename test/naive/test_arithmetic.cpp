@@ -17,7 +17,7 @@ TEST(plus, vector_int)
     vi32 vec    = iota(2);
     vi32 result = plus(vec, 40);
 
-    EXPECT_EQ(result.size(), vec.size());
+    EXPECT_EQ(size(result), vec.size());
     EXPECT_EQ(result[0], 40);
     EXPECT_EQ(result[1], 41);
 }
@@ -27,7 +27,7 @@ TEST(plus, int_vector)
     vi32 vec    = iota(2);
     vi32 result = plus(40, vec);
 
-    EXPECT_EQ(result.size(), vec.size());
+    EXPECT_EQ(size(result), vec.size());
     EXPECT_EQ(result[0], 40);
     EXPECT_EQ(result[1], 41);
 }
@@ -38,8 +38,8 @@ TEST(plus, vector_vector)
     vi32  right = repeat(10, 2);
     vi32 result = plus(left, right);
 
-    EXPECT_EQ(result.size(), left.size());
-    EXPECT_EQ(result.size(), right.size());
+    EXPECT_EQ(size(result), left.size());
+    EXPECT_EQ(size(result), right.size());
     EXPECT_EQ(result[0], 10);
     EXPECT_EQ(result[1], 11);
 }

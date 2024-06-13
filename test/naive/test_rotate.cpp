@@ -8,20 +8,20 @@ namespace naive {
 TEST(rotate, nothing)
 {
     vi32 result = rotate(iota(0), 0);
-    EXPECT_EQ(result.size(), 0);
+    EXPECT_EQ(size(result), 0);
 }
 
 TEST(rotate, one)
 {
     vi32 result = rotate(iota(1));
-    EXPECT_EQ(result.size(), 1);
+    EXPECT_EQ(size(result), 1);
     EXPECT_EQ(result[0], 0);
 }
 
 TEST(rotate, fivePositive)
 {
     vi32 result = rotate(iota(5), 2);
-    EXPECT_EQ(result.size(), 5);
+    EXPECT_EQ(size(result), 5);
     EXPECT_EQ(result[0], 2);
     EXPECT_EQ(result[1], 3);
     EXPECT_EQ(result[2], 4);
@@ -32,7 +32,7 @@ TEST(rotate, fivePositive)
 TEST(rotate, fiveNegative)
 {
     vi32 result = rotate(iota(5), -2);
-    EXPECT_EQ(result.size(), 5);
+    EXPECT_EQ(size(result), 5);
     EXPECT_EQ(result[0], 3);
     EXPECT_EQ(result[1], 4);
     EXPECT_EQ(result[2], 0);
@@ -43,7 +43,7 @@ TEST(rotate, fiveNegative)
 TEST(rotate, fiveReverse)
 {
     vi32 result = rotate(iota(5));
-    EXPECT_EQ(result.size(), 5);
+    EXPECT_EQ(size(result), 5);
     EXPECT_EQ(result[0], 4);
     EXPECT_EQ(result[1], 3);
     EXPECT_EQ(result[2], 2);

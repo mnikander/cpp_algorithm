@@ -5,7 +5,6 @@
 #include <limits>
 #include <numeric> // reduce
 #include <vector>
-
 #include "arithmetic.hpp"
 
 namespace { // anonymous namespace
