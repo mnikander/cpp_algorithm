@@ -4,6 +4,7 @@
 
 #include <cstdint>
 #include <vector>
+#include "meta/expression.hpp"
 
 namespace nv {
 
@@ -18,5 +19,18 @@ int32_t rank(std::vector<T> const& v)
 {
     return 1;
 }
+
+}
+
+namespace xpr {
+
+struct rank : Expression<rank>
+{
+    template <typename T>
+    int32_t operator()(T const& v) const { return nv::rank(v); }
+
+    template <typename T>
+    int32_t operator()(std::vector<T> const& v) const { return nv::rank(v); }
+};
 
 }
