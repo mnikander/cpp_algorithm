@@ -2,14 +2,25 @@
 A loose collection of algorithms inspired by C++ Ranges, Thrust, APL/BQN, Haskell, Lisp, and others.
 
 ## Getting started
-1. Clone the repo
-2. cd cpp_algorithm
-3. mkdir out
-4. cd out
-5. cmake ..
-6. cd ..
-7. cmake --build out/ # out-of-source build
-8. ./out/unit_tests
+
+1. Install dependencies
+```bash
+sudo apt get install _libgtest-dev_ cmake g++
+```
+
+2. Clone the repo
+
+3. Build and run:
+```bash
+cd cpp_algorithm
+mkdir out
+cd out
+cmake ..
+cd ..
+cmake --build out/ # out-of-source build
+./out/unit_tests
+./out/main
+```
 
 # Algorithms
 
