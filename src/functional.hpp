@@ -50,6 +50,29 @@ namespace xpr {
 // This led me to introduce the postfix '_l' to all of the names.
 
 // unary
+// binary
+nv::LogicalNot not_l();
+nv::Identity id()   ;
+nv::Negate neg()  ;
+nv::LogicalAnd and_l();
+nv::LogicalOr or_l() ;
+nv::Plus add();
+nv::Minus sub();
+nv::Times mul();
+nv::Divided div();
+nv::Power pow();
+nv::Min min();
+nv::Max max();
+nv::Equal eq() ;
+nv::Unequal ueq();
+nv::Less le() ;
+nv::LessEqual leq();
+nv::Greater gre();
+nv::GreaterEqual geq();
+nv::LeastCommonMultiple lcm();
+nv::GreatestCommonDivisor gcd();
+
+// unary
 template <typename T> auto not_l(T const& t) { return nv::LogicalNot{}(t); }
 template <typename T> auto id(T const& t) { return nv::Identity{}(t); }
 template <typename T> auto neg(T const& t) { return nv::Negate{}(t); }
