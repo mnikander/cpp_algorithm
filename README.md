@@ -25,14 +25,13 @@ A loose collection of algorithms inspired by C++ Ranges, Thrust, APL/BQN, Lisp, 
 - grade
 - filter
 - map
+- match / equal
 
 # TODO
 - catenate individual element -- or just let the coder put curly braces around it, instead of providing an extra overload? the overload would be better for performance though
 - inner product (std::transform_reduce)
 - scan (with an easier interface)
 - any, all, none
-- match (equal)
-- not match
 - not
 - front / back
 - find
