@@ -2,19 +2,19 @@
 
 #pragma once
 
+#include <cstdint>
 #include <vector>
-#include "../common.hpp"
 
 namespace nv {
 
 template<typename T>
-i64 rank(T const& v)
+int32_t rank(T const& v)
 {
     return 0;
 }
 
 template<typename T>
-i64 rank(std::vector<T> const& v)
+int32_t rank(std::vector<T> const& v)
 {
     return 1;
 }

@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include "../../src/naive/drop.hpp"
 #include "../../src/naive/iota.hpp"
-#include "../../src/common.hpp"
+#include "../../src/datatype_aliases.hpp"
 
 namespace {
 

@@ -1,14 +1,14 @@
 #pragma once
 
+#include <cstdint>
 #include <vector>
-#include "../common.hpp"
 
 namespace nv {
 
 template<typename T>
-i32 size(std::vector<T> const& v)
+int32_t size(std::vector<T> const& v)
 {
-    return static_cast<i32>(v.size());
+    return static_cast<int32_t>(v.size());
 }
 
 }

@@ -3,7 +3,7 @@
 #include "../../src/naive/equal.hpp"
 #include "../../src/naive/iota.hpp"
 #include "../../src/naive/size.hpp"
-#include "../../src/common.hpp"
+#include "../../src/datatype_aliases.hpp"
 
 namespace {
 

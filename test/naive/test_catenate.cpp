@@ -3,7 +3,7 @@
 #include "../../src/naive/catenate.hpp"
 #include "../../src/naive/iota.hpp"
 #include "../../src/naive/reverse.hpp"
-#include "../../src/common.hpp"
+#include "../../src/datatype_aliases.hpp"
 
 namespace {
 
