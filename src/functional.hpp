@@ -21,6 +21,7 @@ struct Plus         { template <typename T> T operator()(T lhs, T rhs) const { r
 struct Minus        { template <typename T> T operator()(T lhs, T rhs) const { return lhs - rhs; } };
 struct Times        { template <typename T> T operator()(T lhs, T rhs) const { return lhs * rhs; } };
 struct Divided      { template <typename T> T operator()(T lhs, T rhs) const { return lhs / rhs; } };
+struct Modulo       { template <typename T> T operator()(T lhs, T rhs) const { return lhs % rhs; } };
 struct Power        { template <typename T> T operator()(T base, T exp) const { return std::pow(base, exp); } };
 struct Min          { template <typename T> T operator()(T lhs, T rhs) const { return std::min(lhs, rhs); } };
 struct Max          { template <typename T> T operator()(T lhs, T rhs) const { return std::max(lhs, rhs); } };
@@ -57,6 +58,7 @@ nv::Plus add();
 nv::Minus sub();
 nv::Times mul();
 nv::Divided div();
+nv::Modulo mod();
 nv::Power pow();
 nv::Min min();
 nv::Max max();
@@ -83,6 +85,7 @@ template <typename T> auto add(T const& lhs, T const& rhs) { return nv::Plus{}(l
 template <typename T> auto sub(T const& lhs, T const& rhs) { return nv::Minus{}(lhs, rhs); }
 template <typename T> auto mul(T const& lhs, T const& rhs) { return nv::Times{}(lhs, rhs); }
 template <typename T> auto div(T const& lhs, T const& rhs) { return nv::Divided{}(lhs, rhs); }
+template <typename T> auto mod(T const& lhs, T const& rhs) { return nv::Modulo{}(lhs, rhs); }
 template <typename T> auto pow(T const& lhs, T const& rhs) { return nv::Power{}(lhs, rhs); }
 template <typename T> auto min(T const& lhs, T const& rhs) { return nv::Min{}(lhs, rhs); }
 template <typename T> auto max(T const& lhs, T const& rhs) { return nv::Max{}(lhs, rhs); }

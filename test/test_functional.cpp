@@ -66,6 +66,13 @@ TEST(functional, divided)
     EXPECT_EQ(xpr::div(12, 6), 2);
 }
 
+TEST(functional, modulo)
+{
+    const auto f = nv::Modulo{};
+    EXPECT_EQ(f(12, 5), 2);
+    EXPECT_EQ(xpr::mod(12, 5), 2);
+}
+
 TEST(functional, power)
 {
     const auto f = nv::Power{};
