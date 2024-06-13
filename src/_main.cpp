@@ -1,9 +1,11 @@
 #include <cstdlib> // exit_success
 #include <iostream>
 #include "io/vector_stream.hpp"
+#include "meta/bind.hpp"
 #include "meta/global_datatypes.hpp"
 #include "catenate.hpp"
 #include "drop.hpp"
+#include "functional.hpp"
 #include "iota.hpp"
 #include "map.hpp"
 #include "reverse.hpp"
@@ -16,7 +18,7 @@ int main()
     vi32 v = vi32{1, 2, 4, 8, 16} | take(3) | drop(1) | reverse();
     std::cout << "    The answer: " << v << std::endl; // ( 4 2 )
 
-    vi32 squared_values = iota(5) | map([](int i){return i*i;});
+    vi32 squared_values = iota(5) | map(power() <<= 2);
     std::cout << "Squared values: " << squared_values << std::endl; // ( 0 1 4 9 16 )
 
     // create a palindrome from those squared numbers
