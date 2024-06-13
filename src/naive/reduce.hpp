@@ -14,6 +14,9 @@ template<typename T> struct ReductionTraits<T, naive::Plus<T>> { static constexp
 template<typename T> struct ReductionTraits<T, naive::Max<T>> { static constexpr T init = std::numeric_limits<T>::lowest(); };
 template<typename T> struct ReductionTraits<T, naive::Min<T>> { static constexpr T init = std::numeric_limits<T>::max(); };
 
+// TODO: do I want to implement alternating minus and division reductions? is that even possible with a normal reduction?
+//       the alternating minus might be useful for calculating determinants
+
 } // anonymous namespace
 
 namespace naive {

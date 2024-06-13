@@ -26,6 +26,7 @@ A loose collection of algorithms inspired by C++ Ranges, Thrust, APL/BQN, Lisp, 
 - decode
 - greatest common divisor / or
 - lowest common multiple / and
+- alternating reduction for minus and division (or some way of doing this)
 - rank
 - match
 - not match
