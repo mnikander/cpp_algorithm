@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <vector>
 
-namespace naive {
+namespace nv {
 
 template<typename T>
 std::vector<T> reverse(std::vector<T> v)

@@ -4,7 +4,7 @@
 #include <vector>
 #include <numeric>
 
-namespace naive {
+namespace nv {
 
 template<typename T>
 std::vector<T> iota(T firstValue, T lastValue)

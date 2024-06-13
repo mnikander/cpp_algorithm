@@ -5,7 +5,7 @@
 #include <vector>
 #include "size.hpp"
 
-namespace naive {
+namespace nv {
 
 template<typename T, typename U>
 bool equal(std::vector<T> const& left, std::vector<U> const& right)

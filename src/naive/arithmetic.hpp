@@ -6,7 +6,7 @@
 #include <vector>
 #include "size.hpp"
 
-namespace naive {
+namespace nv {
 
 template<typename T>
 using Plus = std::plus<T>;

@@ -6,7 +6,7 @@
 #include "reverse.hpp"
 #include "size.hpp"
 
-namespace naive {
+namespace nv {
 
 template<typename T>
 std::vector<T> rotate(std::vector<T> const& v, int count)

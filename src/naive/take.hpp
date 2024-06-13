@@ -5,7 +5,7 @@
 #include <vector>
 #include "size.hpp"
 
-namespace naive {
+namespace nv {
 
 template<typename T>
 std::vector<T> take(std::vector<T> const& v, int count)

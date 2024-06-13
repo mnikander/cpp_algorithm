@@ -5,7 +5,7 @@
 #include <vector>
 #include "size.hpp"
 
-namespace {
+namespace nv {
 
 template<typename T, typename UnaryPred>
 std::vector<T> filter(std::vector<T> const& v, UnaryPred op)

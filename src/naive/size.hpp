@@ -3,7 +3,7 @@
 #include <vector>
 #include "../common.hpp"
 
-namespace naive {
+namespace nv {
 
 template<typename T>
 i32 size(std::vector<T> const& v)

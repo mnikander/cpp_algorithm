@@ -3,20 +3,20 @@
 #include "../../src/naive/map.hpp"
 #include "../../src/common.hpp"
 
-namespace naive {
+namespace {
 
 TEST(map, nothing)
 {
-    vi32 data   = iota(5);
-    vi32 result = map(data, [](int i){ return i; });
+    vi32 data   = nv::iota(5);
+    vi32 result = nv::map(data, [](int i){ return i; });
     ASSERT_EQ(size(data), size(result));
     EXPECT_EQ(data, result);
 }
 
 TEST(map, square)
 {
-    vi32 data   = iota(5);
-    vi32 result = map(data, [](int i){ return i*i; });
+    vi32 data   = nv::iota(5);
+    vi32 result = nv::map(data, [](int i){ return i*i; });
     ASSERT_EQ(size(data), size(result));
     EXPECT_EQ(result[0], 0);
     EXPECT_EQ(result[1], 1);

@@ -4,16 +4,16 @@
 #include "../../src/naive/reduce.hpp"
 #include "../../src/common.hpp"
 
-namespace naive {
+namespace {
 
 TEST(reduce, five)
 {
-    vi32 data  = iota(5);
-    i32 result = reduce(data, Plus<int>{});
+    vi32 data  = nv::iota(5);
+    i32 result = nv::reduce(data, nv::Plus<int>{});
     EXPECT_EQ(result, 10);
 }
 
-// TODO: test plus reduction more thoroughly, including initial values
+// TODO: test nv::plus reduction more thoroughly, including initial values
 // TODO: test max reduction and min reduction
 
 }

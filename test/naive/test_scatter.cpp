@@ -5,19 +5,19 @@
 #include "../../src/naive/size.hpp"
 #include "../../src/common.hpp"
 
-namespace naive {
+namespace {
 
 TEST(scatter, nothing)
 {
-    vi32 nothing = iota(0);
-    vi32 result  = scatter(nothing, nothing);
+    vi32 nothing = nv::iota(0);
+    vi32 result  = nv::scatter(nothing, nothing);
     EXPECT_EQ(size(result), 0);
 }
 
 TEST(scatter, no_op)
 {
     vc8 alphabet{'A', 'B', 'C', 'D', 'E'};
-    vc8 result = scatter(alphabet, iota(5));
+    vc8 result = nv::scatter(alphabet, nv::iota(5));
 
     EXPECT_EQ(result[0], 'A');
     EXPECT_EQ(result[1], 'B');
@@ -30,7 +30,7 @@ TEST(scatter, abcde)
 {
     vc8 alphabet{'A', 'B', 'C', 'D', 'E'};
     vi32 order{2, 0, 1, 4, 3};
-    vc8 result = scatter(alphabet, order);
+    vc8 result = nv::scatter(alphabet, order);
 
     EXPECT_EQ(result[0], 'B');
     EXPECT_EQ(result[1], 'C');
@@ -38,7 +38,7 @@ TEST(scatter, abcde)
     EXPECT_EQ(result[3], 'E');
     EXPECT_EQ(result[4], 'D');
 
-    vc8 restored = scatter(result, {1, 2, 0, 4, 3});
+    vc8 restored = nv::scatter(result, {1, 2, 0, 4, 3});
 
     EXPECT_EQ(restored[0], 'A');
     EXPECT_EQ(restored[1], 'B');
@@ -51,8 +51,8 @@ TEST(scatter, gather)
 {
     vc8 alphabet{'A', 'B', 'C', 'D', 'E'};
     vi32 order{2, 0, 1, 4, 3};
-    vc8 intermediate = scatter(alphabet, order);
-    vc8 result       = gather(intermediate, order);
+    vc8 intermediate = nv::scatter(alphabet, order);
+    vc8 result       = nv::gather(intermediate, order);
 
     EXPECT_EQ(result[0], 'A');
     EXPECT_EQ(result[1], 'B');

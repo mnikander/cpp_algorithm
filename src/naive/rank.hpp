@@ -5,7 +5,7 @@
 #include <vector>
 #include "../common.hpp"
 
-namespace naive {
+namespace nv {
 
 template<typename T>
 i64 rank(T const& v)

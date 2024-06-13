@@ -7,7 +7,7 @@
 #include "iota.hpp"
 #include "size.hpp"
 
-namespace naive {
+namespace nv {
 
 template<typename T, typename BinaryOp>
 std::vector<int> grade(std::vector<T> const& data, BinaryOp op)

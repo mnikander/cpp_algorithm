@@ -7,7 +7,7 @@
 #include <vector>
 #include "size.hpp"
 
-namespace naive {
+namespace nv {
 
 template<typename T>
 std::vector<T> scatter(std::vector<T> const& data, std::vector<int> const& order)

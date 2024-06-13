@@ -3,24 +3,24 @@
 #include "../../src/naive/rotate.hpp"
 #include "../../src/common.hpp"
 
-namespace naive {
+namespace {
 
 TEST(rotate, nothing)
 {
-    vi32 result = rotate(iota(0), 0);
+    vi32 result = nv::rotate(nv::iota(0), 0);
     EXPECT_EQ(size(result), 0);
 }
 
 TEST(rotate, one)
 {
-    vi32 result = rotate(iota(1), 1);
+    vi32 result = nv::rotate(nv::iota(1), 1);
     EXPECT_EQ(size(result), 1);
     EXPECT_EQ(result[0], 0);
 }
 
 TEST(rotate, two_of_five)
 {
-    vi32 result = rotate(iota(5), 2);
+    vi32 result = nv::rotate(nv::iota(5), 2);
     EXPECT_EQ(size(result), 5);
     EXPECT_EQ(result[0], 2);
     EXPECT_EQ(result[1], 3);
@@ -31,7 +31,7 @@ TEST(rotate, two_of_five)
 
 TEST(rotate_last, two_of_five)
 {
-    vi32 result = rotate_last(iota(5), 2);
+    vi32 result = nv::rotate_last(nv::iota(5), 2);
     EXPECT_EQ(size(result), 5);
     EXPECT_EQ(result[0], 3);
     EXPECT_EQ(result[1], 4);
@@ -42,7 +42,7 @@ TEST(rotate_last, two_of_five)
 
 TEST(rotate, all)
 {
-    vi32 result = rotate(iota(5), 5);
+    vi32 result = nv::rotate(nv::iota(5), 5);
     EXPECT_EQ(size(result), 5);
     EXPECT_EQ(result[0], 0);
     EXPECT_EQ(result[1], 1);
