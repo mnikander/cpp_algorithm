@@ -25,4 +25,13 @@ TEST(map, square)
     EXPECT_EQ(result[4], 16);
 }
 
+TEST(map, int_to_float)
+{
+    vf32 result = nv::map(vi32{-1, 0, 1}, [](int i){ return static_cast<f32>(i); });
+    ASSERT_EQ(size(result), 3);
+    EXPECT_FLOAT_EQ(result[0], -1.0F);
+    EXPECT_FLOAT_EQ(result[1],  0.0F);
+    EXPECT_FLOAT_EQ(result[2],  1.0F);
+}
+
 }
