@@ -13,8 +13,8 @@ A loose collection of algorithms inspired by C++ Ranges, Thrust, APL/BQN, Haskel
 
 # Algorithms
 
-Naive implementations of several useful algorithms are available.
-These are designed for ease-of-use, but are hard-coded to std::vector and do copy-by-value, which makes them slow.
+These algorithm implementations are designed for ease-of-use, but are hard-coded to std::vector and do copy-by-value, which makes them slow.
+It does allow playing around with the algorithms early on, and are a first step on the road to the faster implementations.
 
 ## Creation and insertion
 - iota
