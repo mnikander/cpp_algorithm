@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "../../src/pipe/size.hpp"
+#include "../../src/pipe/reverse.hpp"
 #include "../../src/datatype_aliases.hpp"
 
 namespace {
@@ -30,6 +31,15 @@ TEST(pipe, inline_vector_construction)
 {
     i32 result = vi32{0} | pn::size();
     EXPECT_EQ(result, 1);
+}
+
+TEST(pipe, vector_valued_result)
+{
+    vi32 data   = {0, 1, 2};
+    vi32 result = data | pn::reverse();
+    EXPECT_EQ(result[0], 2);
+    EXPECT_EQ(result[1], 1);
+    EXPECT_EQ(result[2], 0);
 }
 
 }
