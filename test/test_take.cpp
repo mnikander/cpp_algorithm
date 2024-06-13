@@ -47,4 +47,20 @@ TEST(take_last, two)
     EXPECT_EQ(result[1], 9);
 }
 
+TEST(take, xpr)
+{
+    vi32 result = nv::iota(5) | xpr::take(2);
+    ASSERT_EQ(size(result), 2);
+    EXPECT_EQ(result[0], 0);
+    EXPECT_EQ(result[1], 1);
+}
+
+TEST(take_last, xpr)
+{
+    vi32 result = nv::iota(5) | xpr::take_last(2);
+    ASSERT_EQ(size(result), 2);
+    EXPECT_EQ(result[0], 3);
+    EXPECT_EQ(result[1], 4);
+}
+
 }
