@@ -11,23 +11,23 @@ include_directories(${GTEST_INCLUDE_DIRS})
 # Link unit_tests with what we want to test and the GTest and pthread library
 add_executable(unit_tests test/main.cpp
                           test/meta/test_result.cpp
-                          test/naive/test_arithmetic.cpp
-                          test/naive/test_catenate.cpp
-                          test/naive/test_drop.cpp
-                          test/naive/test_equal.cpp
-                          test/naive/test_filter.cpp
-                          test/naive/test_gather.cpp
-                          test/naive/test_grade.cpp
-                          test/naive/test_iota.cpp
-                          test/naive/test_map.cpp
-                          test/naive/test_reduce.cpp
-                          test/naive/test_repeat.cpp
-                          test/naive/test_reverse.cpp
-                          test/naive/test_rank.cpp
-                          test/naive/test_rotate.cpp
-                          test/naive/test_scatter.cpp
-                          test/naive/test_size.cpp
-                          test/naive/test_take.cpp
-                          test/naive/test_xpr_pipe.cpp
+                          test/test_arithmetic.cpp
+                          test/test_catenate.cpp
+                          test/test_drop.cpp
+                          test/test_equal.cpp
+                          test/test_filter.cpp
+                          test/test_gather.cpp
+                          test/test_grade.cpp
+                          test/test_iota.cpp
+                          test/test_map.cpp
+                          test/test_reduce.cpp
+                          test/test_repeat.cpp
+                          test/test_reverse.cpp
+                          test/test_rank.cpp
+                          test/test_rotate.cpp
+                          test/test_scatter.cpp
+                          test/test_size.cpp
+                          test/test_take.cpp
+                          test/test_xpr_pipe.cpp
 )
 target_link_libraries(unit_tests ${GTEST_LIBRARIES} pthread)

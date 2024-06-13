@@ -1,23 +1,23 @@
 #include <gtest/gtest.h>
-#include "../../src/naive/iota.hpp"
-#include "../../src/naive/gather.hpp"
-#include "../../src/naive/scatter.hpp"
-#include "../../src/naive/size.hpp"
-#include "../../src/datatype_aliases.hpp"
+#include "../src/iota.hpp"
+#include "../src/gather.hpp"
+#include "../src/scatter.hpp"
+#include "../src/size.hpp"
+#include "../src/datatype_aliases.hpp"
 
 namespace {
 
-TEST(gather, nothing)
+TEST(scatter, nothing)
 {
     vi32 nothing = nv::iota(0);
-    vi32 result  = nv::gather(nothing, nothing);
+    vi32 result  = nv::scatter(nothing, nothing);
     EXPECT_EQ(size(result), 0);
 }
 
-TEST(gather, no_op)
+TEST(scatter, no_op)
 {
     vc8 alphabet{'A', 'B', 'C', 'D', 'E'};
-    vc8 result = nv::gather(alphabet, nv::iota(5));
+    vc8 result = nv::scatter(alphabet, nv::iota(5));
 
     EXPECT_EQ(result[0], 'A');
     EXPECT_EQ(result[1], 'B');
@@ -26,19 +26,19 @@ TEST(gather, no_op)
     EXPECT_EQ(result[4], 'E');
 }
 
-TEST(gather, abcde)
+TEST(scatter, abcde)
 {
     vc8 alphabet{'A', 'B', 'C', 'D', 'E'};
     vi32 order{2, 0, 1, 4, 3};
-    vc8 result = nv::gather(alphabet, order);
+    vc8 result = nv::scatter(alphabet, order);
 
-    EXPECT_EQ(result[0], 'C');
-    EXPECT_EQ(result[1], 'A');
-    EXPECT_EQ(result[2], 'B');
+    EXPECT_EQ(result[0], 'B');
+    EXPECT_EQ(result[1], 'C');
+    EXPECT_EQ(result[2], 'A');
     EXPECT_EQ(result[3], 'E');
     EXPECT_EQ(result[4], 'D');
 
-    vc8 restored = nv::gather(result, {1, 2, 0, 4, 3});
+    vc8 restored = nv::scatter(result, {1, 2, 0, 4, 3});
 
     EXPECT_EQ(restored[0], 'A');
     EXPECT_EQ(restored[1], 'B');
@@ -47,12 +47,12 @@ TEST(gather, abcde)
     EXPECT_EQ(restored[4], 'E');
 }
 
-TEST(gather, scatter)
+TEST(scatter, gather)
 {
     vc8 alphabet{'A', 'B', 'C', 'D', 'E'};
     vi32 order{2, 0, 1, 4, 3};
-    vc8 intermediate = nv::gather(alphabet, order);
-    vc8 result       = nv::scatter(intermediate, order);
+    vc8 intermediate = nv::scatter(alphabet, order);
+    vc8 result       = nv::gather(intermediate, order);
 
     EXPECT_EQ(result[0], 'A');
     EXPECT_EQ(result[1], 'B');

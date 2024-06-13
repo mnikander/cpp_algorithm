@@ -2,7 +2,7 @@
 #include <vector>
 #include <gtest/gtest.h>
 #include "../../src/meta/result.hpp"
-#include "../../src/naive/size.hpp"
+#include "../../src/size.hpp"
 #include "../../src/datatype_aliases.hpp"
 
 namespace {

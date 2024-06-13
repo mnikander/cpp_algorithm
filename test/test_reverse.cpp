@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
-#include "../../src/naive/iota.hpp"
-#include "../../src/naive/reverse.hpp"
-#include "../../src/datatype_aliases.hpp"
+#include "../src/iota.hpp"
+#include "../src/reverse.hpp"
+#include "../src/datatype_aliases.hpp"
 
 namespace {
 

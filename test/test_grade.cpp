@@ -2,11 +2,11 @@
 #include <functional>
 #include <string>
 #include <vector>
-#include "../../src/naive/iota.hpp"
-#include "../../src/naive/gather.hpp"
-#include "../../src/naive/grade.hpp"
-#include "../../src/naive/size.hpp"
-#include "../../src/datatype_aliases.hpp"
+#include "../src/iota.hpp"
+#include "../src/gather.hpp"
+#include "../src/grade.hpp"
+#include "../src/size.hpp"
+#include "../src/datatype_aliases.hpp"
 
 namespace {
 

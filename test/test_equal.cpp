@@ -1,9 +1,9 @@
 #include <gtest/gtest.h>
 #include <vector>
-#include "../../src/naive/equal.hpp"
-#include "../../src/naive/iota.hpp"
-#include "../../src/naive/size.hpp"
-#include "../../src/datatype_aliases.hpp"
+#include "../src/equal.hpp"
+#include "../src/iota.hpp"
+#include "../src/size.hpp"
+#include "../src/datatype_aliases.hpp"
 
 namespace {
 

@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
-#include "../../src/naive/rank.hpp"
-#include "../../src/datatype_aliases.hpp"
+#include "../src/rank.hpp"
+#include "../src/datatype_aliases.hpp"
 
 namespace {
 

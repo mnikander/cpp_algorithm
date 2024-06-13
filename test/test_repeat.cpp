@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
-#include "../../src/naive/repeat.hpp"
-#include "../../src/datatype_aliases.hpp"
+#include "../src/repeat.hpp"
+#include "../src/datatype_aliases.hpp"
 
 namespace {
 

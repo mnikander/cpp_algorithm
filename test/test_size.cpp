@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
-#include "../../src/naive/size.hpp"
-#include "../../src/datatype_aliases.hpp"
+#include "../src/size.hpp"
+#include "../src/datatype_aliases.hpp"
 
 namespace {
 

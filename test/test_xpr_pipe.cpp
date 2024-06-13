@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
-#include "../../src/naive/size.hpp"
-#include "../../src/naive/reverse.hpp"
-#include "../../src/datatype_aliases.hpp"
+#include "../src/size.hpp"
+#include "../src/reverse.hpp"
+#include "../src/datatype_aliases.hpp"
 
 namespace {
 

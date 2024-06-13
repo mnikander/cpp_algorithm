@@ -1,9 +1,9 @@
 #include <gtest/gtest.h>
 #include <vector>
-#include "../../src/naive/catenate.hpp"
-#include "../../src/naive/iota.hpp"
-#include "../../src/naive/reverse.hpp"
-#include "../../src/datatype_aliases.hpp"
+#include "../src/catenate.hpp"
+#include "../src/iota.hpp"
+#include "../src/reverse.hpp"
+#include "../src/datatype_aliases.hpp"
 
 namespace {
 
