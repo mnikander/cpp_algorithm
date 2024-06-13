@@ -7,6 +7,9 @@
 
 namespace naive {
 
+template<typename T>
+using Plus = std::plus<T>;
+
 template <typename T>
 inline T plus(T left, T right)
 {
@@ -37,5 +40,17 @@ inline std::vector<T> plus(std::vector<T> const& left, std::vector<T> const& rig
     std::transform(left.cbegin(), left.cend(), right.cbegin(), result.begin(), std::plus<T>{});
     return result;
 }
+
+template<typename T>
+struct Max
+{
+    T operator()(T const& left, T const& right) const { return std::max(left, right); }
+};
+
+template<typename T>
+struct Min
+{
+    T operator()(T const& left, T const& right) const { return std::min(left, right); }
+};
 
 }
