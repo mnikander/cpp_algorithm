@@ -7,7 +7,7 @@
 namespace naive {
 
 template<typename T>
-inline std::vector<T> iota(T firstValue, T lastValue)
+std::vector<T> iota(T firstValue, T lastValue)
 {
     assert(lastValue >= firstValue);
 
@@ -19,7 +19,7 @@ inline std::vector<T> iota(T firstValue, T lastValue)
 }
 
 template<typename T>
-inline std::vector<T> iota(T lastValue)
+std::vector<T> iota(T lastValue)
 {
     assert(lastValue >= 0);
     return iota(T{0}, lastValue);

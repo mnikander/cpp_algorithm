@@ -7,7 +7,7 @@
 namespace naive {
 
 template<typename T>
-inline std::vector<T> repeat(T value, int count)
+std::vector<T> repeat(T value, int count)
 {
     assert(count >= 0);
     std::vector<T> result(count);

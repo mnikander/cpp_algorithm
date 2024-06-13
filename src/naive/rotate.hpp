@@ -8,7 +8,7 @@
 namespace naive {
 
 template<typename T>
-inline std::vector<T> rotate(std::vector<T> const& v, int count)
+std::vector<T> rotate(std::vector<T> const& v, int count)
 {
     assert(-static_cast<int>(v.size()) <= count);
     assert(count <= static_cast<int>(v.size()));
@@ -26,7 +26,7 @@ inline std::vector<T> rotate(std::vector<T> const& v, int count)
 }
 
 template<typename T>
-inline std::vector<T> rotate(std::vector<T> const& v) // no count
+std::vector<T> rotate(std::vector<T> const& v) // no count
 {
     return reverse(v);
 }

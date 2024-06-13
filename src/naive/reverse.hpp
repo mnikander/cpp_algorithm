@@ -6,7 +6,7 @@
 namespace naive {
 
 template<typename T>
-inline std::vector<T> reverse(std::vector<T> v)
+std::vector<T> reverse(std::vector<T> v)
 {    
     std::vector<T> result(v); // copy-constructor call
     std::reverse(result.begin(), result.end());
