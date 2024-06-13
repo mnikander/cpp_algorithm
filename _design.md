@@ -1,3 +1,7 @@
+# Design decisions
+- hard-code to std::vector to simplify all interfaces
+- implement the first version with hard-copies -- use views and expression templates in a later version
+
 # Tensor support
 How do I want to support tensors? Some options:
 
@@ -23,6 +27,95 @@ How do I want to support tensors? Some options:
 # Mutable vs. immutable
 Do I want to make all data immutable, like the functional languages and BQN do it? With views and expression templates this could still be fine from a performance standpoint. Alternatively I could let the programmer decide what he wants.
 
-# Design decisions
-- hard-code to std::vector to simplify all interfaces
-- implement the first version with hard-copies -- use views and expression templates in a later version
+# Naming and capabilities of arithmetic, trigonometric, and boolean operations
+
+### Unary functions
+- id : identity                        ( ??? )
+- neg: negate                          (available in functional)
+- not: not                             (available in functional)
+- sqrt: square root
+- crt: cube root
+- exp | exp_e: exponential e
+- exp_2:       exponential 2
+- exp_10:      exponential 10
+- log | log_e: logarithm e
+- log_2:       logarithm 2
+- log_10:      logarithm 10
+- sin:  sine
+- asin: arcus_sine
+- cos:  cosine
+- acos: arcus_cosine
+- tan:  tangent
+- atan: arcus_tangent
+- abs:  absolute
+- ceil: ceiling
+- floor: floor
+- round: round
+
+### Binary functions
+
+- add: add, addition, plus             (available in functional)
+- sub: subtract, subtraction, minus    (available in functional)
+- mul: multiply, multiplication, times (available in functional)
+- div: divide, division                (available in functional)
+- mod: modulo, remainder               (available in functional)
+- eq : equal, equality                 (available in functional)
+- neq: not-equal, unequal, inequality  (available in functional)
+- max: maximum / or
+- min: minimum / and
+- gcd: greatest common divisor / or
+- lcm: lowest common multiple / and
+- le : less                            (available in functional)
+- leq: less_equal                      (available in functional)
+- gr : greater                         (available in functional)
+- geq: greater_equal                   (available in functional)
+- pow: power
+
+Once I have `each`, `any`, `all`, and `none` with their full overload sets I will not need to overload any arithmetic operations for vector input. Unfortunately, the _functional_ header is some stuff, so I will have to implement my own if I want consistent namespaces, naming, and the ability to consistently plug them all into algorithms such as map.
+
+Do I want to give these functions partial evaluation capability?
+Then I could do `vi32{2, 8} | each(add(2));`
+Alternatively: `vi32{2, 8} | each(add(), 2);` does not require partial evaluation capabilities and is just as concise
+What about operations where the order matters, such as subtract?
+`vi32{2, 8} | each(sub(1));` or `vi32{2, 8} | each(sub(), 1);` both work for subtracting from the right, but what about 1-n?
+`1 | each(sub(vi32{2, 8}))` is a bit messy...
+`1 | each(sub(), vi32{2, 8})` is much better
+
+So no partial evaluation needed then? :) It's also less work to implement!
+
+Could I somehow achieve this syntax: `1 | sub(each(), vi32{2, 8})` ?
+-- I would probably have to overload _every single function_ to get that syntax, instead of just implementing 'each' once.
+
+# Naming of the map/transform operation
+
+Alternative names:
+- map
+- transform
+- each
+- each_element
+- for_each
+- multi
+- poly
+- element_wise / elementwise
+
+Which looks best?
+
+`auto v = 1 | elementwise(sub(), vi32{1, 2, 3});`
+
+`auto v = 1 | elementwise(subtract(), vi32{1, 2, 3});`
+
+`auto v = 1 | element_wise(sub(), vi32{1, 2, 3});`
+
+`auto v = 1 | element_wise(subtract(), vi32{1, 2, 3});`
+
+`auto v = 1 | multi(subtract(), vi32{1, 2, 3});`
+
+`auto v = 1 | each(subtract(), vi32{1, 2, 3});`
+
+`auto v = 1 | poly(subtract(), vi32{1, 2, 3});`
+
+`auto v = 1 | map(subtract(), vi32{1, 2, 3});`
+
+`auto v = vi32{1, 2, 3} | map(subtract(), 1);`
+
+`auto v = vi32{1, 2, 3} | map(subtract(1));`

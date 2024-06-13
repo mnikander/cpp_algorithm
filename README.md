@@ -32,7 +32,10 @@ It does allow playing around with the algorithms early on, and are a first step 
 - repeat        (C++: fill)
 - catenate
 
-## Order and selection
+## Element retrieval
+- use vector::operator[] as normal
+
+## Permutation and selection
 - reverse
 - rotate
 - rotate_last
@@ -44,9 +47,6 @@ It does allow playing around with the algorithms early on, and are a first step 
 - scatter
 - filter        (C++: copy_if)
 - grade
-
-## Element retrieval
-- 
 
 ## Computation
 - reduce
@@ -63,42 +63,117 @@ It does allow playing around with the algorithms early on, and are a first step 
 - rank
 
 # TODO
-- front / back
+- each / map -- for element-wise (arithmetic) operations
+    - return vector
+    - binary overloads of each replace `nv::plus` -- adapt the code from there :)
+    - each(vector, op) -- replaces `nv::map`
+    - each(vector, op, scalar)
+    - each(vector, op, vector)
+    - each(scalar, op, vector)
+- any, all, none
+    - return boolean
+    - all replaces `nv::equal` -- adapt the code from there :)
+    - early exit behavior (do NOT use reduce!)
+    - {any, all, none}(vector, pred)
+    - {any, all, none}(vector, pred, scalar)
+    - {any, all, none}(vector, pred, vector)
+    - {any, all, none}(scalar, pred, vector)
 - find
-- at / get (?) -- do I want to follow the C++ convention of checking bounds, or just use it as a synonym for operator[]?
 - something to search for the largest/smallest etc element
+- front / back
+- at / get -- with and without bounds checking respectively (C++ convention 'at')
 - contains
 - slice / stencil
-- inner product (similar to std::transform_reduce)
-- scan
+- inner_product / map_reduce
+- scan -- pick one, maybe the inclusive scan
 - sort
-- any, all, none
-- not
-- min / max
-- greatest common divisor / or
-- lowest common multiple / and
-- alternating reduction for minus and division (or some way of doing this)
+- any
+- all
+- none
+
+## Arithmetic and boolean functions
+
+### Unary functions
+- id : identity                        ( ??? )
+- neg: negate                          (available in functional)
+- not: not                             (available in functional)
+- sqrt: square root
+- crt: cube root
+- exp | exp_e: exponential e
+- exp_2:       exponential 2
+- exp_10:      exponential 10
+- log | log_e: logarithm e
+- log_2:       logarithm 2
+- log_10:      logarithm 10
+- sin:  sine
+- asin: arcus_sine
+- cos:  cosine
+- acos: arcus_cosine
+- tan:  tangent
+- atan: arcus_tangent
+- abs:  absolute
+- ceil: ceiling
+- floor: floor
+- round: round
+
+### Binary functions
+
+- add: add, addition, plus             (available in functional)
+- sub: subtract, subtraction, minus    (available in functional)
+- mul: multiply, multiplication, times (available in functional)
+- div: divide, division                (available in functional)
+- mod: modulo, remainder               (available in functional)
+- eq : equal, equality                 (available in functional)
+- neq: not-equal, unequal, inequality  (available in functional)
+- max: maximum / or
+- min: minimum / and
+- gcd: greatest common divisor / or
+- lcm: lowest common multiple / and
+- le : less                            (available in functional)
+- leq: less_equal                      (available in functional)
+- gr : greater                         (available in functional)
+- geq: greater_equal                   (available in functional)
+- pow: power
+
+## Future work on sequences
+- take_while
+- drop_while
 - encode
 - decode
 - zip
 - zip with next
+- alternating reduction for minus and division (or some way of doing this)
 - union (?) -- using DSU perhaps, or a hashmap
 - difference (?)
 - intersection (?)
 - group by (returns a map of lists)
 - chunk (returns list of lists)
-- reduce (init = first element) vs. fold (manually specify init)
+- refactor to fold (manually specify init) vs. reduce (init = first element)
 - fold_left, fold_right (see Haskell)
 - roll
 - deal
 - binomial
 - factorial
 
-# TODO: Tensor algorithms for rank > 1
-- flatten
-- stencil
-- transpose
+## Future work on tensors with rank > 1
+
+- implement a strided range / tensor datatype similar to mdspan or cv::mat
 - outer product
+- stencil
+- view to apply any algorithm around one specified axis (i.e. column-wise plus-reduce)
+- flatten
+- transpose
 - reshape
 - ravel (flatten)
-- view to apply any algorithm around one specified axis (i.e. column-wise plus-reduce)
+
+## Future work on intervals (TBD if I will do this)
+- templated interval type with support for
+    - scalars, to reason about numbers
+    - iterators, to create and manipulate a 'view' on data
+- union
+- intersection
+- difference
+- overload other functions to take an interval as their [first, last) values
+    - iota
+    - stencil
+    - roll (generate a random number in the interval)
