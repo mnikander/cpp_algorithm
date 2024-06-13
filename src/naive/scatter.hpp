@@ -10,7 +10,7 @@
 namespace naive {
 
 template<typename T>
-std::vector<T> scatter(std::vector<T> const& data, std::vector<int> order)
+std::vector<T> scatter(std::vector<T> const& data, std::vector<int> const& order)
 {
     assert(size(order) <= size(data));
 
