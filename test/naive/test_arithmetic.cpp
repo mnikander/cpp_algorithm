@@ -1,8 +1,8 @@
 #include <gtest/gtest.h>
 #include "../../src/naive/arithmetic.hpp"
-#include "../../src/naive/common.hpp"
 #include "../../src/naive/iota.hpp"
 #include "../../src/naive/repeat.hpp"
+#include "../../src/common.hpp"
 
 namespace naive {
 

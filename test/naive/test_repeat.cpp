@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
-#include "../../src/naive/common.hpp"
 #include "../../src/naive/repeat.hpp"
+#include "../../src/common.hpp"
 
 namespace naive {
 
