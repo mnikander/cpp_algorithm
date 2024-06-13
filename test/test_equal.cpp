@@ -61,4 +61,20 @@ TEST(equal, predicate_int_float)
     EXPECT_TRUE(b);
 }
 
+TEST(equal, xpr)
+{
+    b8 t = vi32{0,1} | xpr::equal(vi32{0,1});
+    b8 f = vi32{0,0} | xpr::equal(vi32{0,1});
+    EXPECT_TRUE(t);
+    EXPECT_FALSE(f);
+}
+
+TEST(equal, xpr_lambda)
+{
+    b8 t = vi32{0,1} | xpr::equal(vi32{0,1}, [](int l, int r) { return l == r; });
+    b8 f = vi32{0,0} | xpr::equal(vi32{0,1}, [](int l, int r) { return l == r; });
+    EXPECT_TRUE(t);
+    EXPECT_FALSE(f);
+}
+
 }
