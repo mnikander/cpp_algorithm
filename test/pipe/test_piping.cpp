@@ -8,7 +8,7 @@ namespace {
 TEST(pipe, size_without_pipe)
 {
     vi32 data        = {};
-    const pn::Size s = pn::size();
+    const pn::size s = pn::size();
     int result       = s(data);
     EXPECT_EQ(result, 0);
 }

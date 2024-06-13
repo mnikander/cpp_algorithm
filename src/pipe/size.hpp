@@ -7,12 +7,10 @@
 
 namespace pn {
 
-struct Size : Expression<Size>
+struct size : Expression<size>
 {
     template <typename T>
     int32_t operator()(std::vector<T> const& v) const { return nv::size(v); }
 };
-
-Size size(); // has no template parameters, so it had to be defined in a cpp file
 
 }

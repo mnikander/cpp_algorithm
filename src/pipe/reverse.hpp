@@ -7,12 +7,10 @@
 
 namespace pn {
 
-struct Reverse : Expression<Reverse>
+struct reverse : Expression<reverse>
 {
     template <typename T>
     std::vector<int> operator()(std::vector<T> const& v) const { return nv::reverse(v); }
 };
-
-Reverse reverse(); // has no template parameters, so it had to be defined in a cpp file
 
 }

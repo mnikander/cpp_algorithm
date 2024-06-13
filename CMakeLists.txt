@@ -8,13 +8,8 @@ set(CMAKE_CXX_STANDARD 17)
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
 
-set(SOURCES src/pipe/size.cpp
-            src/pipe/reverse.cpp
-)
-
 # Link unit_tests with what we want to test and the GTest and pthread library
-add_executable(unit_tests ${SOURCES}
-                          test/main.cpp
+add_executable(unit_tests test/main.cpp
                           test/meta/test_result.cpp
 
                           test/naive/test_arithmetic.cpp
