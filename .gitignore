@@ -3,4 +3,4 @@
 *.so
 *.a
 *.out
-build/
+out/
