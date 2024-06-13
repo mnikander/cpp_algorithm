@@ -72,7 +72,7 @@ TEST(map, vector_vector)
 
 TEST(map, tag_vector_vector)
 {
-    vi32 result = nv::map(nv::iota(3), meta::Plus{}, nv::reverse(nv::iota(3)));
+    vi32 result = nv::map(nv::iota(3), nv::Plus{}, nv::reverse(nv::iota(3)));
 
     ASSERT_EQ(size(result), 3);
     EXPECT_EQ(result[0], 2);

@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD 17)
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
 
-set(SOURCES src/functional.cpp)
+set(SOURCES )
 
 # Link unit_tests with what we want to test and the GTest and pthread library
 add_executable(unit_tests ${SOURCES}
