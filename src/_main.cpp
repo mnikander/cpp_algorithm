@@ -14,11 +14,14 @@ int main()
     using namespace xpr;
 
     vi32 v = vi32{1, 2, 4, 8, 16} | take(3) | drop(1) | reverse();
-    std::cout << "The answer: " << v << std::endl;
+    std::cout << "    The answer: " << v << std::endl; // ( 4 2 )
 
-    vi32 squares    = iota(5) | map([](int i){return i*i;});
-    vi32 palindrome = squares | catenate(squares | drop_last(1) | reverse());
-    std::cout << "Palidrome: " << palindrome << std::endl;
+    vi32 squared_values = iota(5) | map([](int i){return i*i;});
+    std::cout << "Squared values: " << squared_values << std::endl; // ( 0 1 4 9 16 )
+
+    // create a palindrome from those squared numbers
+    vi32 palindrome = squared_values | catenate(squared_values | drop_last(1) | reverse());
+    std::cout << "     Palidrome: " << palindrome << std::endl; // ( 0 1 4 9 16 9 4 1 0 )
 
     return EXIT_SUCCESS;
 }
