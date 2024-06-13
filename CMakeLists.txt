@@ -15,5 +15,6 @@ add_executable(unit_tests test/main.cpp
                           test/naive/test_iota.cpp
                           test/naive/test_reduce.cpp
                           test/naive/test_repeat.cpp
+                          test/naive/test_reverse.cpp
 )
 target_link_libraries(unit_tests ${GTEST_LIBRARIES} pthread)
