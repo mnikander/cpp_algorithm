@@ -129,14 +129,14 @@ TEST(functional, greater_equal)
     EXPECT_EQ(xpr::greater_equal(4, 6), false);
 }
 
-TEST(functional, lcm)
+TEST(functional, least_common_multiple)
 {
     const auto f = nv::LeastCommonMultiple{};
     EXPECT_EQ(f(4, 6), 12);
     EXPECT_EQ(xpr::least_common_multiple(4, 6), 12);
 }
 
-TEST(functional, gcd)
+TEST(functional, greatest_common_divisor)
 {
     const auto f = nv::GreatestCommonDivisor{};
     EXPECT_EQ(f(4, 6), 2);
