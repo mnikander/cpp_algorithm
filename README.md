@@ -15,7 +15,7 @@ A loose collection of algorithms inspired by C++ Ranges, Thrust, APL/BQN, Lisp, 
 - reverse (std::reverse)
 - rotate
 - reduce (with an easier interface)
-- catenate (resize + std::copy or just std::copy)
+- catenate
 - take, take_last
 - drop, drop_last
 - tally / size
@@ -28,7 +28,6 @@ A loose collection of algorithms inspired by C++ Ranges, Thrust, APL/BQN, Lisp, 
 - match / equal
 
 # TODO
-- catenate individual element -- or just let the coder put curly braces around it, instead of providing an extra overload? the overload would be better for performance though
 - inner product (std::transform_reduce)
 - scan (with an easier interface)
 - any, all, none
