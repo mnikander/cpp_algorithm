@@ -87,7 +87,7 @@ template <typename T> auto pow(T const& lhs, T const& rhs) { return nv::Power{}(
 template <typename T> auto min(T const& lhs, T const& rhs) { return nv::Min{}(lhs, rhs); }
 template <typename T> auto max(T const& lhs, T const& rhs) { return nv::Max{}(lhs, rhs); }
 template <typename T> auto eq(T const& lhs, T const& rhs) { return nv::Equal{}(lhs, rhs); }
-template <typename T> auto ueq(T const& lhs, T const& rhs) { return nv::Unequal{}(lhs, rhs); }
+template <typename T> auto neq(T const& lhs, T const& rhs) { return nv::Unequal{}(lhs, rhs); }
 template <typename T> auto le(T const& lhs, T const& rhs) { return nv::Less{}(lhs, rhs); }
 template <typename T> auto leq(T const& lhs, T const& rhs) { return nv::LessEqual{}(lhs, rhs); }
 template <typename T> auto gre(T const& lhs, T const& rhs) { return nv::Greater{}(lhs, rhs); }

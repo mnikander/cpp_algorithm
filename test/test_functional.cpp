@@ -98,7 +98,7 @@ TEST(functional, unequal)
 {
     const auto f = nv::Unequal{};
     EXPECT_EQ(f(4, 6), true);
-    EXPECT_EQ(xpr::ueq(4, 6), true);
+    EXPECT_EQ(xpr::neq(4, 6), true);
 }
 
 TEST(functional, less)
