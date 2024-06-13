@@ -8,8 +8,11 @@ set(CMAKE_CXX_STANDARD 17)
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
 
+set(SOURCES src/functional.cpp)
+
 # Link unit_tests with what we want to test and the GTest and pthread library
-add_executable(unit_tests test/main.cpp
+add_executable(unit_tests ${SOURCES}
+                          test/main.cpp
                           test/meta/test_result.cpp
                           test/test_arithmetic.cpp
                           test/test_catenate.cpp
@@ -33,5 +36,5 @@ add_executable(unit_tests test/main.cpp
 )
 target_link_libraries(unit_tests ${GTEST_LIBRARIES} pthread)
 
-add_executable(main src/_main.cpp)
+add_executable(main src/_main.cpp ${SOURCES})
 target_include_directories(main PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})

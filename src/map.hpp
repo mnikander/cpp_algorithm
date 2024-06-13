@@ -2,8 +2,7 @@
 
 #include <algorithm>
 #include <vector>
-#include "functional_tags.hpp"
-#include "functional_dispatch.hpp"
+#include "functional.hpp"
 #include "size.hpp"
 
 namespace nv {
