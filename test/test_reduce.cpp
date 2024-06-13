@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../src/arithmetic.hpp"
+#include "../src/functional.hpp"
 #include "../src/iota.hpp"
 #include "../src/reduce.hpp"
 #include "../src/meta/global_datatypes.hpp"
@@ -9,7 +9,7 @@ namespace {
 TEST(reduce, five)
 {
     vi32 data  = nv::iota(5);
-    i32 result = nv::reduce(data, nv::Plus<int>{});
+    i32 result = nv::reduce(data, nv::Plus{});
     EXPECT_EQ(result, 10);
 }
 

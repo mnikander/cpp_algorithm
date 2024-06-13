@@ -5,14 +5,14 @@
 #include <limits>
 #include <numeric> // reduce
 #include <vector>
-#include "arithmetic.hpp"
+#include "functional.hpp"
 
 namespace { // anonymous namespace
 
 template<typename T, typename OperatorTag> struct ReductionTraits{};
-template<typename T> struct ReductionTraits<T, nv::Plus<T>> { static constexpr T init = T{0}; };
-template<typename T> struct ReductionTraits<T, nv::Max<T>> { static constexpr T init = std::numeric_limits<T>::lowest(); };
-template<typename T> struct ReductionTraits<T, nv::Min<T>> { static constexpr T init = std::numeric_limits<T>::max(); };
+template<typename T> struct ReductionTraits<T, nv::Plus> { static constexpr T init = T{0}; };
+template<typename T> struct ReductionTraits<T, nv::Max> { static constexpr T init = std::numeric_limits<T>::lowest(); };
+template<typename T> struct ReductionTraits<T, nv::Min> { static constexpr T init = std::numeric_limits<T>::max(); };
 
 // TODO: do I want to implement alternating minus and division reductions? is that even possible with a normal reduction?
 //       the alternating minus might be useful for calculating determinants

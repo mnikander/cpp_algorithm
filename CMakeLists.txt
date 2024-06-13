@@ -14,7 +14,6 @@ set(SOURCES src/functional.cpp)
 add_executable(unit_tests ${SOURCES}
                           test/main.cpp
                           test/meta/test_result.cpp
-                          test/test_arithmetic.cpp
                           test/test_catenate.cpp
                           test/test_drop.cpp
                           test/test_equal.cpp
