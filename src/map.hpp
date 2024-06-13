@@ -17,6 +17,13 @@ auto map(std::vector<T> const& left, UnaryOp op)
 }
 
 template <typename T, typename BinaryOp>
+auto map(T left, BinaryOp op, T right)
+    -> decltype(op(T{}, T{}))
+{
+    return op(left, right);
+}
+
+template <typename T, typename BinaryOp>
 auto map(T left, BinaryOp op, std::vector<T> const& right)
     -> std::vector<decltype(op(T{}, T{}))>
 {

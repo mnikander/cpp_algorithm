@@ -40,6 +40,13 @@ TEST(map, unary_int_to_float)
     EXPECT_FLOAT_EQ(result[2],  1.0F);
 }
 
+TEST(map, scalar_scalar)
+{
+    i32 result = nv::map(10, std::plus<int>{}, 3);
+
+    EXPECT_EQ(result, 13);
+}
+
 TEST(map, scalar_vector)
 {
     vi32 result = nv::map(10, std::plus<int>{}, nv::iota(3));
