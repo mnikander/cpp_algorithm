@@ -19,12 +19,12 @@ template <typename T> struct Negate       { T operator()(T t) const { return -t;
 template <typename T> struct Plus         { T operator()(T lhs, T rhs) const { return lhs + rhs; } };
 template <typename T> struct Minus        { T operator()(T lhs, T rhs) const { return lhs - rhs; } };
 template <typename T> struct Times        { T operator()(T lhs, T rhs) const { return lhs * rhs; } };
-template <typename T> struct Divides      { T operator()(T lhs, T rhs) const { return lhs / rhs; } };
+template <typename T> struct Divided      { T operator()(T lhs, T rhs) const { return lhs / rhs; } };
 template <typename T> struct Power        { T operator()(T base, T exp) const { return std::pow(base, exp); } };
 template <typename T> struct Min          { T operator()(T lhs, T rhs) const { return std::min(lhs, rhs); } };
 template <typename T> struct Max          { T operator()(T lhs, T rhs) const { return std::max(lhs, rhs); } };
 template <typename T> struct Equal        { bool operator()(T lhs, T rhs) const { return lhs == rhs; } };
-template <typename T> struct NotEqual     { bool operator()(T lhs, T rhs) const { return lhs != rhs; } };
+template <typename T> struct Unequal      { bool operator()(T lhs, T rhs) const { return lhs != rhs; } };
 template <typename T> struct Less         { bool operator()(T lhs, T rhs) const { return lhs < rhs; } };
 template <typename T> struct LessEqual    { bool operator()(T lhs, T rhs) const { return lhs <= rhs; } };
 template <typename T> struct Greater      { bool operator()(T lhs, T rhs) const { return lhs > rhs; } };
@@ -54,12 +54,12 @@ struct Negate{};
 struct Plus{};
 struct Minus{};
 struct Times{};
-struct Divides{};
+struct Divided{};
 struct Power{};
 struct Min{};
 struct Max{};
 struct Equal{};
-struct NotEqual{};
+struct Unequal{};
 struct Less{};
 struct LessEqual{};
 struct Greater{};
@@ -77,12 +77,12 @@ template <typename T> auto dispatch(Negate tag, T) { return nv::Negate<T>{}; }
 template <typename T> auto dispatch(Plus tag, T) { return nv::Plus<T>{}; }
 template <typename T> auto dispatch(Minus tag, T) { return nv::Minus<T>{}; }
 template <typename T> auto dispatch(Times tag, T) { return nv::Times<T>{}; }
-template <typename T> auto dispatch(Divides tag, T) { return nv::Divides<T>{}; }
+template <typename T> auto dispatch(Divided tag, T) { return nv::Divided<T>{}; }
 template <typename T> auto dispatch(Power tag, T) { return nv::Power<T>{}; }
 template <typename T> auto dispatch(Min tag, T) { return nv::Min<T>{}; }
 template <typename T> auto dispatch(Max tag, T) { return nv::Max<T>{}; }
 template <typename T> auto dispatch(Equal tag, T) { return nv::Equal<T>{}; }
-template <typename T> auto dispatch(NotEqual tag, T) { return nv::NotEqual<T>{}; }
+template <typename T> auto dispatch(Unequal tag, T) { return nv::Unequal<T>{}; }
 template <typename T> auto dispatch(Less tag, T) { return nv::Less<T>{}; }
 template <typename T> auto dispatch(LessEqual tag, T) { return nv::LessEqual<T>{}; }
 template <typename T> auto dispatch(Greater tag, T) { return nv::Greater<T>{}; }
@@ -98,22 +98,48 @@ namespace xpr {
 
 // Unfortunately 'not' 'and' 'or' are reserved keywords in C++, so I cannot create functions with that name.
 // This led me to introduce the prefix 'logical' to all of the names. 
-                      auto logical_not() {return meta::LogicalNot{}; }                // get the tag
-template <typename T> auto logical_not(T const& t) { return nv::LogicalNot<T>{}(t); } // execute function
+                      auto logical_not() {return meta::LogicalNot{}; }                                       // get the tag
+template <typename T> auto logical_not(T const& t) { return nv::LogicalNot<T>{}(t); }                        // execute function
                       auto logical_and() {return meta::LogicalAnd{}; }                                       // get the tag
 template <typename T> auto logical_and(T const& lhs, T const& rhs) { return nv::LogicalAnd<T>{}(lhs, rhs); } // execute function
-                      auto logical_or() {return meta::LogicalOr{}; }                                       // get the tag
-template <typename T> auto logical_or(T const& lhs, T const& rhs) { return nv::LogicalOr<T>{}(lhs, rhs); } // execute function
+                      auto logical_or() {return meta::LogicalOr{}; }                                         // get the tag
+template <typename T> auto logical_or(T const& lhs, T const& rhs) { return nv::LogicalOr<T>{}(lhs, rhs); }   // execute function
 
 // unary
-                      auto identity() {return meta::Identity{}; }                // get the tag
-template <typename T> auto identity(T const& t) { return nv::Identity<T>{}(t); } // execute function
-                      auto negate() {return meta::Negate{}; }                // get the tag
-template <typename T> auto negate(T const& t) { return nv::Negate<T>{}(t); } // execute function
+                      auto identity() {return meta::Identity{}; }                                     // get the tag
+template <typename T> auto identity(T const& t) { return nv::Identity<T>{}(t); }                      // execute function
+                      auto negate() {return meta::Negate{}; }                                         // get the tag
+template <typename T> auto negate(T const& t) { return nv::Negate<T>{}(t); }                          // execute function
 
 // binary
-                      auto least_common_multiple() {return meta::LeastCommonMultiple{}; }                                       // get the tag
-template <typename T> auto least_common_multiple(T const& lhs, T const& rhs) { return nv::LeastCommonMultiple<T>{}(lhs, rhs); } // execute function
+                      auto plus() {return meta::Plus{}; }                                             // get the tag
+template <typename T> auto plus(T const& lhs, T const& rhs) { return nv::Plus<T>{}(lhs, rhs); }       // execute function
+                      auto minus() {return meta::Minus{}; }                                           // get the tag
+template <typename T> auto minus(T const& lhs, T const& rhs) { return nv::Minus<T>{}(lhs, rhs); }     // execute function
+                      auto times() {return meta::Times{}; }                                           // get the tag
+template <typename T> auto times(T const& lhs, T const& rhs) { return nv::Times<T>{}(lhs, rhs); }     // execute function
+                      auto divided() {return meta::Divided{}; }                                       // get the tag
+template <typename T> auto divided(T const& lhs, T const& rhs) { return nv::Divided<T>{}(lhs, rhs); } // execute function
+                      auto power() {return meta::Power{}; }                                           // get the tag
+template <typename T> auto power(T const& lhs, T const& rhs) { return nv::Power<T>{}(lhs, rhs); }     // execute function
+                      auto min() {return meta::Min{}; }                                               // get the tag
+template <typename T> auto min(T const& lhs, T const& rhs) { return nv::Min<T>{}(lhs, rhs); }         // execute function
+                      auto max() {return meta::Max{}; }                                               // get the tag
+template <typename T> auto max(T const& lhs, T const& rhs) { return nv::Max<T>{}(lhs, rhs); }         // execute function
+                      auto equal() {return meta::Equal{}; }                                           // get the tag
+template <typename T> auto equal(T const& lhs, T const& rhs) { return nv::Equal<T>{}(lhs, rhs); }     // execute function
+                      auto unequal() {return meta::Unequal{}; }                                       // get the tag
+template <typename T> auto unequal(T const& lhs, T const& rhs) { return nv::Unequal<T>{}(lhs, rhs); } // execute function
+                      auto less() {return meta::Less{}; }                                             // get the tag
+template <typename T> auto less(T const& lhs, T const& rhs) { return nv::Less<T>{}(lhs, rhs); }       // execute function
+                      auto less_equal() {return meta::LessEqual{}; }                                             // get the tag
+template <typename T> auto less_equal(T const& lhs, T const& rhs) { return nv::LessEqual<T>{}(lhs, rhs); }       // execute function
+                      auto greater() {return meta::Greater{}; }                                                  // get the tag
+template <typename T> auto greater(T const& lhs, T const& rhs) { return nv::Greater<T>{}(lhs, rhs); }            // execute function
+                      auto greater_equal() {return meta::GreaterEqual{}; }                                       // get the tag
+template <typename T> auto greater_equal(T const& lhs, T const& rhs) { return nv::GreaterEqual<T>{}(lhs, rhs); } // execute function
+                      auto least_common_multiple() {return meta::LeastCommonMultiple{}; }                                           // get the tag
+template <typename T> auto least_common_multiple(T const& lhs, T const& rhs) { return nv::LeastCommonMultiple<T>{}(lhs, rhs); }     // execute function
                       auto greatest_common_divisor() {return meta::GreatestCommonDivisor{}; }                                       // get the tag
 template <typename T> auto greatest_common_divisor(T const& lhs, T const& rhs) { return nv::GreatestCommonDivisor<T>{}(lhs, rhs); } // execute function
 
