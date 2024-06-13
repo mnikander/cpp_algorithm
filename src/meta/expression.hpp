@@ -23,5 +23,4 @@ auto operator|(std::vector<T> const& v, Expression<E> const& right) -> decltype(
     return (expression.operator()(v));
 }
 
-
 }
