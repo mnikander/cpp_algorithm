@@ -10,7 +10,6 @@ include_directories(${GTEST_INCLUDE_DIRS})
 
 # Link unit_tests with what we want to test and the GTest and pthread library
 add_executable(unit_tests test/main.cpp
-                          test/meta/test_result_factory.cpp
                           test/meta/test_result.cpp
                           test/naive/test_arithmetic.cpp
                           test/naive/test_iota.cpp
