@@ -19,6 +19,8 @@ A loose collection of algorithms inspired by C++ Ranges, Thrust, APL/BQN, Lisp, 
 - take
 - drop
 - tally / size
+- gather (i.e. index operator[] in APL)
+- scatter
 
 # TODO
 - scan (with an easier interface)
@@ -33,8 +35,6 @@ A loose collection of algorithms inspired by C++ Ranges, Thrust, APL/BQN, Lisp, 
 - roll
 - deal
 - grade
-- index (a.k.a. gather)
-- scatter
 - zip
 - unzip (?)
 - inner product (std::transform reduce)
