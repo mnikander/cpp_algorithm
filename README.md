@@ -22,6 +22,7 @@ A loose collection of algorithms inspired by C++ Ranges, Thrust, APL/BQN, Lisp, 
 - rank
 - gather (i.e. index operator[] in APL)
 - scatter
+- grade
 
 # TODO
 - scan (with an easier interface)
@@ -34,7 +35,6 @@ A loose collection of algorithms inspired by C++ Ranges, Thrust, APL/BQN, Lisp, 
 - not match
 - roll
 - deal
-- grade
 - zip
 - unzip (?)
 - inner product (std::transform reduce)
