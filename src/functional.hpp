@@ -43,17 +43,14 @@ struct GreatestCommonDivisor { template <typename T> T operator()(T lhs, T rhs) 
 
 namespace xpr {
 
-// functions which just execute the actual function object
-
-// logical
-// Unfortunately 'not' 'and' 'or' are reserved keywords in C++, so I cannot create functions with that name.
-// This led me to introduce the postfix '_l' to all of the names.
+// functions which retrive the function object, see cpp file for implementation
 
 // unary
-// binary
 nv::LogicalNot not_l();
 nv::Identity id()   ;
 nv::Negate neg()  ;
+
+// binary
 nv::LogicalAnd and_l();
 nv::LogicalOr or_l() ;
 nv::Plus add();
@@ -71,6 +68,8 @@ nv::Greater gre();
 nv::GreaterEqual geq();
 nv::LeastCommonMultiple lcm();
 nv::GreatestCommonDivisor gcd();
+
+// functions which retrieve and execute the function object
 
 // unary
 template <typename T> auto not_l(T const& t) { return nv::LogicalNot{}(t); }
@@ -99,21 +98,4 @@ template <typename T> auto gcd(T const& lhs, T const& rhs) { return nv::Greatest
 }
 
 // Unfortunately 'not' 'and' 'or' are reserved keywords in C++, so I cannot create functions with that name.
-// Uppercase names would work.
-// To be consistent, I would have to give all my functors and functions uppercase names...
-// Or I force the user to differentiate between the tag 'Not' and the function 'Not'... that still doesn't change the
-// fact it cannot be lowercase though. :(
-// Another option would be to give them a special name by prefixing or postfixing something:
-// _not, not_f, f_not, not_, 
-
-// Specializing the the original functors to have zero-argument versions which are the tag, does not seem to work:
-//
-//     struct EmptyType {};
-//     template <typename T> struct Not  { T operator()(T t) const { return !t; } };
-//     template <> struct Not<EmptyType> {};
-//
-// results in compilation errors:
-//
-//     const auto t = Not<>{}; // error: wrong number of template arguments (0, should be 1)
-//     const auto t = Not{};   // error: class template argument deduction failed
-//
+// This led me to introduce the postfix '_l' to all of the names.

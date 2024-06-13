@@ -2,9 +2,12 @@
 
 namespace xpr {
 
+// unary
 nv::LogicalNot not_l() { return nv::LogicalNot{}; }
 nv::Identity id()    { return nv::Identity{}; }
 nv::Negate neg()   { return nv::Negate{}; }
+
+// binary
 nv::LogicalAnd and_l() { return nv::LogicalAnd{}; }
 nv::LogicalOr or_l()  { return nv::LogicalOr{}; }
 nv::Plus add() { return nv::Plus{}; }
