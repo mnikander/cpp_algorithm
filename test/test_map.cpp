@@ -77,9 +77,45 @@ TEST(map, vector_vector)
     EXPECT_EQ(result[2], 2);
 }
 
-TEST(map, tag_vector_vector)
+TEST(map, vector_vector_functional)
 {
     vi32 result = nv::map(nv::iota(3), nv::Plus{}, nv::reverse(nv::iota(3)));
+
+    ASSERT_EQ(size(result), 3);
+    EXPECT_EQ(result[0], 2);
+    EXPECT_EQ(result[1], 2);
+    EXPECT_EQ(result[2], 2);
+}
+
+TEST(map, xpr_scalar_scalar)
+{
+    i32 result = 2 | xpr::map(xpr::add(), 3);
+    EXPECT_EQ(result, 5);
+}
+
+TEST(map, xpr_scalar_vector)
+{
+    vi32 result = 10 | xpr::map(xpr::add(), xpr::iota(3));
+
+    ASSERT_EQ(size(result), 3);
+    EXPECT_EQ(result[0], 10);
+    EXPECT_EQ(result[1], 11);
+    EXPECT_EQ(result[2], 12);
+}
+
+TEST(map, xpr_vector_scalar)
+{
+    vi32 result = xpr::iota(3) | xpr::map(xpr::add(), 10);
+
+    ASSERT_EQ(size(result), 3);
+    EXPECT_EQ(result[0], 10);
+    EXPECT_EQ(result[1], 11);
+    EXPECT_EQ(result[2], 12);
+}
+
+TEST(map, xpr_vector_vector)
+{
+    vi32 result = xpr::iota(3) | xpr::map(xpr::add(), nv::reverse(nv::iota(3)));
 
     ASSERT_EQ(size(result), 3);
     EXPECT_EQ(result[0], 2);

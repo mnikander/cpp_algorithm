@@ -4,6 +4,8 @@
 
 namespace xpr {
 
+struct NoRightArgument{}; // empty type needed for some template specializations, such as 'map'
+
 template <typename E>
 struct Expression{};
 

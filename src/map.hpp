@@ -55,6 +55,30 @@ auto map(std::vector<T> const& left, BinaryOp op, std::vector<T> const& right)
 
 namespace xpr {
 
-// TODO
+template <typename Operation, typename R>
+struct map : Expression<map<Operation, R>>
+{
+    map(Operation op, R const& right) : _op{op}, _right{right} {}
+
+    template<typename T>
+    std::vector<T> operator()(std::vector<T> const& left) const { return nv::map(left, _op, _right); }
+
+    template<typename T>
+    auto operator()(T const& left) const { return nv::map(left, _op, _right); }
+
+    Operation const _op;
+    R const& _right;
+};
+
+template <typename Operation>
+struct map<Operation, NoRightArgument> : Expression<map<Operation, NoRightArgument>>
+{
+    map(Operation op) : _op{op} {}
+
+    template<typename T>
+    std::vector<T> operator()(std::vector<T> const& v) const { return nv::map(v, _op); }
+
+    const Operation _op;
+};
 
 }
