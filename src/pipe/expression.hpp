@@ -2,7 +2,7 @@
 
 #include <vector>
 
-namespace pn {
+namespace xpr {
 
 template <typename E>
 struct Expression{};

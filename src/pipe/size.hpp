@@ -5,7 +5,7 @@
 #include "../naive/size.hpp"
 #include "expression.hpp"
 
-namespace pn {
+namespace xpr {
 
 struct size : Expression<size>
 {

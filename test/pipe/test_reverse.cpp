@@ -7,7 +7,7 @@ namespace {
 TEST(pipe, reverse)
 {
     vi32 data   = {0, 1, 2};
-    vi32 result = data | pn::reverse();
+    vi32 result = data | xpr::reverse();
     EXPECT_EQ(result[0], 2);
     EXPECT_EQ(result[1], 1);
     EXPECT_EQ(result[2], 0);

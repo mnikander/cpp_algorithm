@@ -5,7 +5,7 @@
 #include "../naive/reverse.hpp"
 #include "expression.hpp"
 
-namespace pn {
+namespace xpr {
 
 struct reverse : Expression<reverse>
 {
