@@ -13,6 +13,7 @@ add_executable(unit_tests test/main.cpp
                           test/meta/test_result.cpp
                           test/naive/test_arithmetic.cpp
                           test/naive/test_catenate.cpp
+                          test/naive/test_drop.cpp
                           test/naive/test_iota.cpp
                           test/naive/test_reduce.cpp
                           test/naive/test_repeat.cpp
