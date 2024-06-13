@@ -13,9 +13,6 @@ struct Size : Expression<Size>
     int32_t operator()(std::vector<T> const& v) const { return nv::size(v); }
 };
 
-Size size()
-{
-    return Size{};
-}
+Size size(); // has no template parameters, so it had to be defined in a cpp file
 
 }
