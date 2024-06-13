@@ -19,6 +19,7 @@ A loose collection of algorithms inspired by C++ Ranges, Thrust, APL/BQN, Lisp, 
 - take
 - drop
 - tally / size
+- rank
 - gather (i.e. index operator[] in APL)
 - scatter
 
@@ -29,7 +30,6 @@ A loose collection of algorithms inspired by C++ Ranges, Thrust, APL/BQN, Lisp, 
 - greatest common divisor / or
 - lowest common multiple / and
 - alternating reduction for minus and division (or some way of doing this)
-- rank
 - match
 - not match
 - roll

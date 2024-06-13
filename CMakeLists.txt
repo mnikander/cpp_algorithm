@@ -19,6 +19,7 @@ add_executable(unit_tests test/main.cpp
                           test/naive/test_reduce.cpp
                           test/naive/test_repeat.cpp
                           test/naive/test_reverse.cpp
+                          test/naive/test_rank.cpp
                           test/naive/test_rotate.cpp
                           test/naive/test_scatter.cpp
                           test/naive/test_take.cpp
