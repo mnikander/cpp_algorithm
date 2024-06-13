@@ -63,4 +63,14 @@ TEST(grade, weights)
     EXPECT_EQ(objectsByWeight[4], "house");
 }
 
+TEST(grade, xpr)
+{
+    vi32 result = vc8{'b', 'a', 'c'} | xpr::grade(std::less<char>{});
+
+    ASSERT_EQ(size(result), 3);
+    EXPECT_EQ(result[0], 1);
+    EXPECT_EQ(result[1], 0);
+    EXPECT_EQ(result[2], 2);
+}
+
 }
