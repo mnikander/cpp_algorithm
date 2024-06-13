@@ -87,6 +87,18 @@ TEST(map, vector_vector_functional)
     EXPECT_EQ(result[2], 2);
 }
 
+TEST(map, xpr_vector)
+{
+    vi32 result = xpr::iota(5) | xpr::map([](int i){ return i*i; });
+
+    ASSERT_EQ(size(result), size(result));
+    EXPECT_EQ(result[0], 0);
+    EXPECT_EQ(result[1], 1);
+    EXPECT_EQ(result[2], 4);
+    EXPECT_EQ(result[3], 9);
+    EXPECT_EQ(result[4], 16);
+}
+
 TEST(map, xpr_scalar_scalar)
 {
     i32 result = 2 | xpr::map(xpr::add(), 3);

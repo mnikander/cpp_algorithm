@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <vector>
+#include "meta/expression.hpp"
 #include "functional.hpp"
 #include "size.hpp"
 
@@ -53,12 +54,25 @@ auto map(std::vector<T> const& left, BinaryOp op, std::vector<T> const& right)
 
 }
 
+
 namespace xpr {
+namespace {
+
+template <typename Operation>
+struct UnaryMap : Expression<UnaryMap<Operation>>
+{
+    explicit UnaryMap(Operation op, NoRightArgument = NoRightArgument{}) : _op{op} {}
+
+    template<typename T>
+    std::vector<T> operator()(std::vector<T> const& v) const { return nv::map(v, _op); }
+
+    Operation const _op;
+};
 
 template <typename Operation, typename R>
-struct map : Expression<map<Operation, R>>
+struct BinaryMap : Expression<BinaryMap<Operation, R>>
 {
-    map(Operation op, R const& right) : _op{op}, _right{right} {}
+    BinaryMap(Operation op, R const& right) : _op{op}, _right{right} {}
 
     template<typename T>
     std::vector<T> operator()(std::vector<T> const& left) const { return nv::map(left, _op, _right); }
@@ -69,16 +83,12 @@ struct map : Expression<map<Operation, R>>
     Operation const _op;
     R const& _right;
 };
+}
 
 template <typename Operation>
-struct map<Operation, NoRightArgument> : Expression<map<Operation, NoRightArgument>>
-{
-    map(Operation op) : _op{op} {}
+UnaryMap<Operation> map(Operation op) { return UnaryMap(op); }
 
-    template<typename T>
-    std::vector<T> operator()(std::vector<T> const& v) const { return nv::map(v, _op); }
-
-    const Operation _op;
-};
+template <typename Operation, typename R>
+BinaryMap<Operation, R> map(Operation op, R const& right) { return BinaryMap(op, right); }
 
 }
