@@ -5,7 +5,7 @@ A loose collection of algorithms inspired by C++ Ranges, Thrust, APL/BQN, Haskel
 
 1. Install dependencies
 ```bash
-sudo apt get install _libgtest-dev_ cmake g++
+sudo apt get install libgtest-dev cmake g++
 ```
 
 2. Clone the repo
