@@ -163,7 +163,7 @@ It does allow playing around with the algorithms early on, and are a first step 
 - view to apply any algorithm around one specified axis (i.e. column-wise plus-reduce)
 - flatten
 - transpose
-- reshape
+- (re)shape (rename repeat to shape, and extend the 'count' to be an n-entry vector describing the desired n-dimensional shape)
 - ravel (flatten)
 
 ## Future work on intervals (TBD if I will do this)
