@@ -16,4 +16,22 @@ TEST(reduce, five)
 // TODO: test nv::plus reduction more thoroughly, including initial values
 // TODO: test max reduction and min reduction
 
+TEST(reduce, xpr_add)
+{
+    i32 result = vi32{1, 2, 4, 8, 16} | xpr::reduce(xpr::add(), 0);
+    EXPECT_EQ(result, 31);
+}
+
+TEST(reduce, xpr_mul)
+{
+    i32 result = vi32{1, 2, 4} | xpr::reduce(xpr::mul(), 1);
+    EXPECT_EQ(result, 8);
+}
+
+TEST(reduce, xpr_default_init)
+{
+    i32 result = vi32{1, 2, 4} | xpr::reduce(xpr::mul());
+    EXPECT_EQ(result, 8);
+}
+
 }
