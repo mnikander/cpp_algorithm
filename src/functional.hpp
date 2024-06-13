@@ -2,7 +2,7 @@
 
 #include <algorithm>
 #include <cmath>
-#include <numeric> // gcd, lcm
+#include <numeric> // greatest_common_divisor, least_common_multiple
 
 namespace nv {
 
@@ -19,14 +19,14 @@ struct Negate       { template <typename T> T operator()(T t) const { return -t;
 // binary ops, which are both: (1) a tag which represents the operation and (2) the implementation of that operation
 struct Plus         { template <typename T> T operator()(T lhs, T rhs) const { return lhs + rhs; } };
 struct Minus        { template <typename T> T operator()(T lhs, T rhs) const { return lhs - rhs; } };
-struct Times        { template <typename T> T operator()(T lhs, T rhs) const { return lhs * rhs; } };
-struct Divided      { template <typename T> T operator()(T lhs, T rhs) const { return lhs / rhs; } };
+struct Multiply        { template <typename T> T operator()(T lhs, T rhs) const { return lhs * rhs; } };
+struct Divide      { template <typename T> T operator()(T lhs, T rhs) const { return lhs / rhs; } };
 struct Modulo       { template <typename T> T operator()(T lhs, T rhs) const { return lhs % rhs; } };
 struct Power        { template <typename T> T operator()(T base, T exp) const { return std::pow(base, exp); } };
-struct Min          { template <typename T> T operator()(T lhs, T rhs) const { return std::min(lhs, rhs); } };
-struct Max          { template <typename T> T operator()(T lhs, T rhs) const { return std::max(lhs, rhs); } };
+struct Minimum          { template <typename T> T operator()(T lhs, T rhs) const { return std::min(lhs, rhs); } };
+struct Maximum          { template <typename T> T operator()(T lhs, T rhs) const { return std::max(lhs, rhs); } };
 struct Equal        { template <typename T> bool operator()(T lhs, T rhs) const { return lhs == rhs; } };
-struct Unequal      { template <typename T> bool operator()(T lhs, T rhs) const { return lhs != rhs; } };
+struct NotEqual      { template <typename T> bool operator()(T lhs, T rhs) const { return lhs != rhs; } };
 struct Less         { template <typename T> bool operator()(T lhs, T rhs) const { return lhs < rhs; } };
 struct LessEqual    { template <typename T> bool operator()(T lhs, T rhs) const { return lhs <= rhs; } };
 struct Greater      { template <typename T> bool operator()(T lhs, T rhs) const { return lhs > rhs; } };
@@ -47,56 +47,56 @@ namespace xpr {
 // functions which retrive the function object, see cpp file for implementation
 
 // unary
-nv::LogicalNot not_l();
-nv::Identity id()   ;
-nv::Negate neg()  ;
+nv::LogicalNot logical_not();
+nv::Identity identity();
+nv::Negate negate();
 
 // binary
-nv::LogicalAnd and_l();
-nv::LogicalOr or_l() ;
-nv::Plus add();
-nv::Minus sub();
-nv::Times mul();
-nv::Divided div();
-nv::Modulo mod();
-nv::Power pow();
-nv::Min min();
-nv::Max max();
-nv::Equal eq() ;
-nv::Unequal ueq();
-nv::Less le() ;
-nv::LessEqual leq();
-nv::Greater gre();
-nv::GreaterEqual geq();
-nv::LeastCommonMultiple lcm();
-nv::GreatestCommonDivisor gcd();
+nv::LogicalAnd logical_and();
+nv::LogicalOr logical_or();
+nv::Plus plus();
+nv::Minus minus();
+nv::Multiply multipy();
+nv::Divide divide();
+nv::Modulo modulo();
+nv::Power power();
+nv::Minimum minimum();
+nv::Maximum maximum();
+nv::Equal equal() ;
+nv::NotEqual not_equal();
+nv::Less less();
+nv::LessEqual less_equal();
+nv::Greater greater();
+nv::GreaterEqual greater_equal();
+nv::LeastCommonMultiple least_common_multiple();
+nv::GreatestCommonDivisor greatest_common_divisor();
 
 // functions which retrieve and execute the function object
 
 // unary
-template <typename T> auto not_l(T const& t) { return nv::LogicalNot{}(t); }
-template <typename T> auto id(T const& t) { return nv::Identity{}(t); }
-template <typename T> auto neg(T const& t) { return nv::Negate{}(t); }
+template <typename T> auto logical_not(T const& t) { return nv::LogicalNot{}(t); }
+template <typename T> auto identity(T const& t) { return nv::Identity{}(t); }
+template <typename T> auto negate(T const& t) { return nv::Negate{}(t); }
 
 // binary
-template <typename T> auto and_l(T const& lhs, T const& rhs) { return nv::LogicalAnd{}(lhs, rhs); }
-template <typename T> auto or_l(T const& lhs, T const& rhs) { return nv::LogicalOr{}(lhs, rhs); }
-template <typename T> auto add(T const& lhs, T const& rhs) { return nv::Plus{}(lhs, rhs); }
-template <typename T> auto sub(T const& lhs, T const& rhs) { return nv::Minus{}(lhs, rhs); }
-template <typename T> auto mul(T const& lhs, T const& rhs) { return nv::Times{}(lhs, rhs); }
-template <typename T> auto div(T const& lhs, T const& rhs) { return nv::Divided{}(lhs, rhs); }
-template <typename T> auto mod(T const& lhs, T const& rhs) { return nv::Modulo{}(lhs, rhs); }
-template <typename T> auto pow(T const& lhs, T const& rhs) { return nv::Power{}(lhs, rhs); }
-template <typename T> auto min(T const& lhs, T const& rhs) { return nv::Min{}(lhs, rhs); }
-template <typename T> auto max(T const& lhs, T const& rhs) { return nv::Max{}(lhs, rhs); }
-template <typename T> auto eq(T const& lhs, T const& rhs) { return nv::Equal{}(lhs, rhs); }
-template <typename T> auto neq(T const& lhs, T const& rhs) { return nv::Unequal{}(lhs, rhs); }
-template <typename T> auto le(T const& lhs, T const& rhs) { return nv::Less{}(lhs, rhs); }
-template <typename T> auto leq(T const& lhs, T const& rhs) { return nv::LessEqual{}(lhs, rhs); }
-template <typename T> auto gre(T const& lhs, T const& rhs) { return nv::Greater{}(lhs, rhs); }
-template <typename T> auto geq(T const& lhs, T const& rhs) { return nv::GreaterEqual{}(lhs, rhs); }
-template <typename T> auto lcm(T const& lhs, T const& rhs) { return nv::LeastCommonMultiple{}(lhs, rhs); }
-template <typename T> auto gcd(T const& lhs, T const& rhs) { return nv::GreatestCommonDivisor{}(lhs, rhs); }
+template <typename T> auto logical_and(T const& lhs, T const& rhs) { return nv::LogicalAnd{}(lhs, rhs); }
+template <typename T> auto logical_or(T const& lhs, T const& rhs) { return nv::LogicalOr{}(lhs, rhs); }
+template <typename T> auto plus(T const& lhs, T const& rhs) { return nv::Plus{}(lhs, rhs); }
+template <typename T> auto minus(T const& lhs, T const& rhs) { return nv::Minus{}(lhs, rhs); }
+template <typename T> auto multipy(T const& lhs, T const& rhs) { return nv::Multiply{}(lhs, rhs); }
+template <typename T> auto divide(T const& lhs, T const& rhs) { return nv::Divide{}(lhs, rhs); }
+template <typename T> auto modulo(T const& lhs, T const& rhs) { return nv::Modulo{}(lhs, rhs); }
+template <typename T> auto power(T const& lhs, T const& rhs) { return nv::Power{}(lhs, rhs); }
+template <typename T> auto minimum(T const& lhs, T const& rhs) { return nv::Minimum{}(lhs, rhs); }
+template <typename T> auto maximum(T const& lhs, T const& rhs) { return nv::Maximum{}(lhs, rhs); }
+template <typename T> auto equal(T const& lhs, T const& rhs) { return nv::Equal{}(lhs, rhs); }
+template <typename T> auto not_equal(T const& lhs, T const& rhs) { return nv::NotEqual{}(lhs, rhs); }
+template <typename T> auto less(T const& lhs, T const& rhs) { return nv::Less{}(lhs, rhs); }
+template <typename T> auto less_equal(T const& lhs, T const& rhs) { return nv::LessEqual{}(lhs, rhs); }
+template <typename T> auto greater(T const& lhs, T const& rhs) { return nv::Greater{}(lhs, rhs); }
+template <typename T> auto greater_equal(T const& lhs, T const& rhs) { return nv::GreaterEqual{}(lhs, rhs); }
+template <typename T> auto least_common_multiple(T const& lhs, T const& rhs) { return nv::LeastCommonMultiple{}(lhs, rhs); }
+template <typename T> auto greatest_common_divisor(T const& lhs, T const& rhs) { return nv::GreatestCommonDivisor{}(lhs, rhs); }
 
 }
 

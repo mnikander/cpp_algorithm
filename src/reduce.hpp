@@ -1,6 +1,6 @@
 #pragma once
 
-#include <algorithm> // max
+#include <algorithm> // maximum
 #include <functional> // plus
 #include <limits>
 #include <numeric> // reduce
@@ -11,9 +11,9 @@ namespace { // anonymous namespace
 
 template<typename T, typename BinaryOp> struct ReductionTraits{};
 template<typename T>                    struct ReductionTraits<T, nv::Plus>  { static constexpr T init = T{0}; };
-template<typename T>                    struct ReductionTraits<T, nv::Times> { static constexpr T init = T{1}; };
-template<typename T>                    struct ReductionTraits<T, nv::Max>   { static constexpr T init = std::numeric_limits<T>::lowest(); };
-template<typename T>                    struct ReductionTraits<T, nv::Min>   { static constexpr T init = std::numeric_limits<T>::max(); };
+template<typename T>                    struct ReductionTraits<T, nv::Multiply> { static constexpr T init = T{1}; };
+template<typename T>                    struct ReductionTraits<T, nv::Maximum>   { static constexpr T init = std::numeric_limits<T>::lowest(); };
+template<typename T>                    struct ReductionTraits<T, nv::Minimum>   { static constexpr T init = std::numeric_limits<T>::maximum(); };
 
 // TODO: do I want to implement alternating minus and division reductions? is that even possible with a normal reduction?
 //       the alternating minus might be useful for calculating determinants
