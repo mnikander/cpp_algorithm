@@ -40,4 +40,12 @@ TEST(iota, singleArgument2)
     EXPECT_EQ(result[1], 1);
 }
 
+TEST(iota, xpr)
+{
+    vi32 result = xpr::iota(3);
+    EXPECT_EQ(result[0], 0);
+    EXPECT_EQ(result[1], 1);
+    EXPECT_EQ(result[2], 2);
+}
+
 }
