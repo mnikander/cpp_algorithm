@@ -73,22 +73,95 @@ Alternative names:
 
 Which looks best?
 
-`auto v = 1 | elementwise(sub(), vi32{1, 2, 3});`
+```cpp
+auto v = 1 | elementwise(sub(), vi32{1, 2, 3});
 
-`auto v = 1 | elementwise(subtract(), vi32{1, 2, 3});`
+auto v = 1 | elementwise(subtract(), vi32{1, 2, 3});
 
-`auto v = 1 | element_wise(sub(), vi32{1, 2, 3});`
+auto v = 1 | element_wise(sub(), vi32{1, 2, 3});
 
-`auto v = 1 | element_wise(subtract(), vi32{1, 2, 3});`
+auto v = 1 | element_wise(subtract(), vi32{1, 2, 3});
 
-`auto v = 1 | multi(subtract(), vi32{1, 2, 3});`
+auto v = 1 | multi(subtract(), vi32{1, 2, 3});
 
-`auto v = 1 | each(subtract(), vi32{1, 2, 3});`
+auto v = 1 | each(subtract(), vi32{1, 2, 3});
 
-`auto v = 1 | poly(subtract(), vi32{1, 2, 3});`
+auto v = 1 | poly(subtract(), vi32{1, 2, 3});
 
-`auto v = 1 | map(subtract(), vi32{1, 2, 3});`
+auto v = 1 | map(subtract(), vi32{1, 2, 3});
 
-`auto v = vi32{1, 2, 3} | map(subtract(), 1);`
+auto v = vi32{1, 2, 3} | map(subtract(), 1);
 
-`auto v = vi32{1, 2, 3} | map(subtract(1));`
+auto v = vi32{1, 2, 3} | map(subtract(1));
+
+auto result = vi32{0, 1, 2} | xpr::catenate() | vi32{2, 1, 0}; // ok-ish
+
+auto result = vi32{0, 1, 2} | xpr::map(std::Plus<int>) | vi32{2, 1, 0};
+
+auto result = vi32{0, 1, 2} | xpr::map(Plus{}) | vi32{2, 1, 0};
+
+auto result = vi32{0, 1, 2} | xpr::map(Plus{}, vi32{2, 1, 0});
+
+auto result = xpr::zip(vi32{0, 1, 2}, vi32{2, 1, 0}) | xpr::map(Plus{}); // shit
+
+auto result = xpr::map(Plus{}, xpr::zip(vi32{0, 1, 2}, vi32{2, 1, 0})); // shit
+
+auto result = {0, 1, 2} + {2, 1, 0};
+
+auto result = map (+) (0, 1, 2) (2, 1, 0);             // ok/good, the two arrays back to back are weird
+
+auto result = map (+) (iota 3) (2, 1, 0);              // haskell-like, pretty good
+
+auto result = map [+] (1:3) (2:0);
+
+auto result = map (+) iota(3) reverse(iota(3));
+
+auto result = map (+) iota(3) iota(3).reverse();      // not so good, the '.' looks like a space
+
+auto result = map (+) iota(3) (iota(3)|reverse());    // a bit better
+
+auto result = map max iota(3) reverse(iota(3));
+
+auto result = (map, +, iota(3), iota(3)|reverse());
+
+auto result = map, +, iota(3), iota(3)|reverse();
+
+auto result = 2 + reduce (+) map (+) iota(3) (2, 1, 0);
+
+auto result = 2 + reduce (+) (map (+) iota(3) (2, 1, 0));
+
+auto result = 2 + reduce plus map plus iota(3) (2, 1, 0);
+
+auto result = 2 + (reduce (+) (map (+) iota(3) (2, 1, 0)));
+
+auto result = (+ 2 (reduce + (map + (iota 3) (2, 1, 0))));      // lisp-like
+
+auto result = (plus 2 (reduce max (map + (iota 3) (2, 1, 0)))); // lisp-like, but verbose operators
+```
+
+```apl
+result ← 2 + ⌈/ (⍳2) + (2 1)
+result ← 2 + ⌈/ (⍳2) + (⌽⍳2)
+result ← 2 + (⍳3) ⌈.+ (⌽⍳3)
+result ← 2 + (⍳3) ⌈.+ ⌽⍳3
+```
+
+```cpp
+auto result = 2 + (iota 3) max inner_product plus rotate iota 3;
+
+auto result = 2 + inner_product (max) (plus) (iota(3)) (rotate(iota(3)));
+
+auto result = 2 + inner_product<max,plus>(iota(3), {2, 1, 0}); // C++, actually OK, predefined ops only
+
+auto result = 2 + inner_product(max, plus, iota(3), {2, 1, 0}); // C++, not as good, but allows lambdas
+
+auto result = 2 + inner_product(max<int>{}, plus<int>{}, iota(3), {2, 1, 0}); // C++, bad
+
+auto result = 2 + inner_product(max<int>{}, plus<int>{})(iota(3), {2, 1, 0}); // C++ functor, bad
+
+auto result = 2 + inner_product(max{}, plus{})(iota(3), {2, 1, 0}); // C++ functor, not much better
+
+auto result = map(plus, iota(3), reverse(iota(3)));   // doable in C++
+
+auto result = map("plus", iota(3), reverse(iota(3))); // slow, switch-case
+```
