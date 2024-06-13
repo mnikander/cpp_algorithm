@@ -5,7 +5,7 @@
 #include "reverse.hpp"
 #include "size.hpp"
 #include "take.hpp"
-#include "meta/datatype_aliases.hpp"
+#include "meta/global_datatypes.hpp"
 
 int main()
 {

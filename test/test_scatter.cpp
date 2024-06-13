@@ -3,7 +3,7 @@
 #include "../src/gather.hpp"
 #include "../src/scatter.hpp"
 #include "../src/size.hpp"
-#include "../src/meta/datatype_aliases.hpp"
+#include "../src/meta/global_datatypes.hpp"
 
 namespace {
 

@@ -1,7 +1,7 @@
 #include <array>
 #include <vector>
 #include <gtest/gtest.h>
-#include "../../src/meta/datatype_aliases.hpp"
+#include "../../src/meta/global_datatypes.hpp"
 #include "../../src/meta/result.hpp"
 #include "../../src/size.hpp"
 
