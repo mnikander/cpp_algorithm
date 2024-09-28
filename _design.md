@@ -137,6 +137,8 @@ auto result = (+ 2 (reduce + (map + (iota 3) (2, 1, 0))));      // lisp-like
 auto result = (plus 2 (reduce max (map + (iota 3) (2, 1, 0)))); // lisp-like, but verbose operators
 ```
 
+# In search of a better syntax
+
 ```apl
 result ← 2 + ⌈/ (⍳2) + (2 1)
 result ← 2 + ⌈/ (⍳2) + (⌽⍳2)
@@ -145,21 +147,54 @@ result ← 2 + (⍳3) ⌈.+ ⌽⍳3
 ```
 
 ```cpp
-auto result = 2 + (iota 3) max inner_product plus rotate iota 3;
-
-auto result = 2 + inner_product (max) (plus) (iota(3)) (rotate(iota(3)));
-
-auto result = 2 + inner_product<max,plus>(iota(3), {2, 1, 0}); // C++, actually OK, predefined ops only
-
-auto result = 2 + inner_product(max, plus, iota(3), {2, 1, 0}); // C++, not as good, but allows lambdas
-
-auto result = 2 + inner_product(max<int>{}, plus<int>{}, iota(3), {2, 1, 0}); // C++, bad
-
-auto result = 2 + inner_product(max<int>{}, plus<int>{})(iota(3), {2, 1, 0}); // C++ functor, bad
-
-auto result = 2 + inner_product(max{}, plus{})(iota(3), {2, 1, 0}); // C++ functor, not much better
-
 auto result = map(plus, iota(3), reverse(iota(3)));   // doable in C++
-
 auto result = map("plus", iota(3), reverse(iota(3))); // slow, switch-case
+```
+
+```cpp
+int result = (iota 3) max inner_product plus rotate iota 3;
+int result = inner_product (max) (plus) (iota(3)) (rotate(iota(3)));
+int result = inner_product<max,plus>(iota(3), {2, 1, 0}); // C++, actually OK, predefined ops only
+int result = inner_product(max, plus, iota(3), {2, 1, 0}); // C++, not as good, but allows lambdas
+int result = inner_product(max<int>{}, plus<int>{}, iota(3), {2, 1, 0}); // C++, bad
+int result = inner_product(max<int>{}, plus<int>{})(iota(3), {2, 1, 0}); // C++ functor, bad
+int result = inner_product(max{}, plus{})(iota(3), {2, 1, 0}); // C++ functor, not much better
+
+int dot_product = reduce{multiply()}(map{plus()}(zip(iota(3), reverse(iota(3)))));
+int dot_product = iota(3) | zip(iota(3) | reverse()) | map(plus()) | reduce(multiply());
+int dot_product = (iota(3) >> zip() << (iota(3) >> reverse())) >> element_wise(plus()) >> reduce(multiply());
+int dot_product = (iota(3) >> zip() << reverse() << iota(3)) >> element_wise(plus()) >> reduce(multiply()); // enable streaming arguments to the left AND right for ALL function-like objects
+int dot_product = (iota(3) >> zip << reverse << iota(3)) >> element_wise(plus()) >> reduce(multiply()); // perhaps some parenthesis could be dropped, if the streaming operations on functions directly (instead of function-like objects)
+int dot_product = ((iota(3) >> zip << reverse << iota(3)) >> (element_wise << plus)) >> (reduce << multiply); // APL-style order of execution (the right argument is everything to the right of a function), with corresponding parentheses
+int dot_product = iota(3) | (map_reduce(multiply(), plus(), 0)(iota(3) | reverse())); // a function to construct a dedicated map_reduce function-object cleans the code up a lot
+int dot_product = iota(3) | map_reduce(multiply(), plus(), 0, (iota(3) | reverse())); // direct construction is easier to implement, especially the overload resolution
+int dot_product = iota(3) | map_reduce(multiply, plus, 0, (iota(3) | reverse()));     // perhaps the parethesis can be dropped, if 'multiply' and 'plus' are functions (not function objects) and 'map_reduce' has an overload which recognizes this and calls the functions to retrieve the actual function objects
+
+// GOOD SYNTAX:
+int dot_product = iota(3) | map_reduce(multiply, plus, 0, iota(3) | reverse);         // we might be able to push that a little farther still, by modifying the pipe-operator to do the same, for 'reverse' for example
+
+// If we predefine the left and right sequence the dot_product expression becomes shorter:
+vi32 A = iota(3);
+vi32 B = A | reverse;
+int dot_product = A | map_reduce(multiply, plus, 0, B);
+int dot_product = A | (map_reduce(multiply, plus, 0)(B)); // alternative syntax, where overload resolution, order of execution, and the implementation of operator| could be a bit more challenging
+
+vi32 A = {0, 1, 2, 3, 4};
+vi32 B = A | reverse;
+int dot_product = (A | map(multiply)(B)) | reduce(0, plus); // break map-reduce into individual functions, preferably with a binary transform-view implementation to avoid copies
+
+// BEST SYNTAX:
+vi32 A = {0, 1, 2, 3, 4};
+vi32 B = A | reverse;
+int dot_product = (A | map(multiply, B)) | reduce(0, plus); // make overload resolution of 'map' a little easier
+```
+
+## Using a DSL
+```cpp
+vi32 A = {0, 1, 2, 3, 4};
+vi32 B = A | reverse;
+int dot_product = (A map<times> B) reduce<0, add>; // a DSL could do better
+int dot_product = (A times B) reduce<0, add>;      // a DSL with automatic function-lifting could do even better
+int dot_product = 0 reduce<add> (A times B);       // different syntax for accumulator of reduce -- probably the best syntax overall
+int dot_product = 0 add (A times B);               // automatic reduction, similar to automatic lifting, is problematic because we may also want to put 'plus' into a scan or some other algorithm
 ```
