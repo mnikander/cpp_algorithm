@@ -50,7 +50,7 @@ struct BinaryNone : Expression<BinaryNone<BinaryPred, R>>
     std::vector<R> const _right;
 };
 
-// overloaded functions to retrieve the correct Functor
+// overloaded functions to retrieve the correct function object
 template <typename UnaryPred>
 UnaryNone<UnaryPred> none(UnaryPred pred)
 {

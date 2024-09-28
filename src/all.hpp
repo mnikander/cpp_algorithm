@@ -48,7 +48,7 @@ struct BinaryAll : Expression<BinaryAll<BinaryPred, R>>
     std::vector<R> const _right;
 };
 
-// overloaded functions to retrieve the correct Functor
+// overloaded functions to retrieve the correct function object
 template <typename UnaryPred>
 UnaryAll<UnaryPred> all(UnaryPred pred)
 {
