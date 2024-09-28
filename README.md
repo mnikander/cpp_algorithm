@@ -46,6 +46,7 @@ It does allow playing around with the algorithms early on, and are a first step 
 - scatter
 - filter           (C++: copy_if)
 - grade
+- shuffle
 
 ## Computation
 - reduce

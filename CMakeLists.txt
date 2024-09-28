@@ -31,6 +31,7 @@ add_executable(unit_tests ${SOURCES}
                           test/test_rank.cpp
                           test/test_rotate.cpp
                           test/test_scatter.cpp
+                          test/test_shuffle.cpp
                           test/test_size.cpp
                           test/test_take.cpp
                           test/test_xpr_pipe.cpp
