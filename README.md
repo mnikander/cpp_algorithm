@@ -29,6 +29,7 @@ It does allow playing around with the algorithms early on, and are a first step 
 - iota
 - repeat           (C++: fill)
 - catenate
+- zip
 
 ## Element retrieval
 - use vector::operator[] as normal
@@ -132,7 +133,6 @@ Or make a namespace `math` which contains them as constexpr values, i.e. `math::
 - drop_while
 - encode
 - decode
-- zip
 - zip with next
 - alternating reduction for minus and division (or some way of doing this)
 - union (?) -- using DSU perhaps, or a hashmap
