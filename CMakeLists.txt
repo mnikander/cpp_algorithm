@@ -34,6 +34,7 @@ add_executable(unit_tests ${SOURCES}
                           test/test_size.cpp
                           test/test_take.cpp
                           test/test_xpr_pipe.cpp
+                          test/test_zip.cpp
 )
 target_link_libraries(unit_tests ${GTEST_LIBRARIES} pthread)
 
