@@ -14,7 +14,7 @@ TEST(zip, nothing)
     ASSERT_EQ(size(result), 0);
 }
 
-TEST(zip, simple)
+TEST(zip, five_five)
 {
     vc8 alphabet{'A', 'B', 'C', 'D', 'E'};
     auto result = nv::zip(alphabet, nv::iota(0, 5));
@@ -28,10 +28,22 @@ TEST(zip, simple)
     EXPECT_EQ(result[4], std::make_pair('E', 4));
 }
 
-TEST(zip, unequal)
+TEST(zip, three_five)
 {
     vc8 alphabet{'A', 'B', 'C'};
     auto result = nv::zip(alphabet, nv::iota(0, 5));
+
+    ASSERT_EQ(size(result), 3);
+
+    EXPECT_EQ(result[0], std::make_pair('A', 0));
+    EXPECT_EQ(result[1], std::make_pair('B', 1));
+    EXPECT_EQ(result[2], std::make_pair('C', 2));
+}
+
+TEST(zip, five_three)
+{
+    vc8 alphabet{'A', 'B', 'C', 'D', 'E'};
+    auto result = nv::zip(alphabet, nv::iota(0, 3));
 
     ASSERT_EQ(size(result), 3);
 
