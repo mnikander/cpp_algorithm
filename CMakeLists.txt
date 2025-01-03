@@ -14,28 +14,49 @@ set(SOURCES )
 add_executable(unit_tests ${SOURCES}
                           test/main.cpp
                           test/meta/test_result.cpp
-                          test/test_all.cpp
-                          test/test_any.cpp
-                          test/test_catenate.cpp
-                          test/test_drop.cpp
-                          test/test_filter.cpp
+
+                          test/pipeline/test_all.cpp
+                          test/pipeline/test_any.cpp
+                          test/pipeline/test_catenate.cpp
+                          test/pipeline/test_drop.cpp
+                          test/pipeline/test_filter.cpp
+                          test/pipeline/test_gather.cpp
+                          test/pipeline/test_grade.cpp
+                          test/pipeline/test_iota.cpp
+                          test/pipeline/test_map.cpp
+                          test/pipeline/test_none.cpp
+                          test/pipeline/test_reduce.cpp
+                          test/pipeline/test_repeat.cpp
+                          test/pipeline/test_reverse.cpp
+                          test/pipeline/test_rank.cpp
+                          test/pipeline/test_rotate.cpp
+                          test/pipeline/test_scatter.cpp
+                          test/pipeline/test_size.cpp
+                          test/pipeline/test_take.cpp
+                          test/pipeline/test_xpr_pipe.cpp
+
+                          test/simple/test_all.cpp
+                          test/simple/test_any.cpp
+                          test/simple/test_catenate.cpp
+                          test/simple/test_drop.cpp
+                          test/simple/test_filter.cpp
+                          test/simple/test_gather.cpp
+                          test/simple/test_grade.cpp
+                          test/simple/test_iota.cpp
+                          test/simple/test_map.cpp
+                          test/simple/test_none.cpp
+                          test/simple/test_reduce.cpp
+                          test/simple/test_repeat.cpp
+                          test/simple/test_reverse.cpp
+                          test/simple/test_rank.cpp
+                          test/simple/test_rotate.cpp
+                          test/simple/test_scatter.cpp
+                          test/simple/test_shuffle.cpp
+                          test/simple/test_size.cpp
+                          test/simple/test_take.cpp
+                          test/simple/test_zip.cpp
+
                           test/test_functional.cpp
-                          test/test_gather.cpp
-                          test/test_grade.cpp
-                          test/test_iota.cpp
-                          test/test_map.cpp
-                          test/test_none.cpp
-                          test/test_reduce.cpp
-                          test/test_repeat.cpp
-                          test/test_reverse.cpp
-                          test/test_rank.cpp
-                          test/test_rotate.cpp
-                          test/test_scatter.cpp
-                          test/test_shuffle.cpp
-                          test/test_size.cpp
-                          test/test_take.cpp
-                          test/test_xpr_pipe.cpp
-                          test/test_zip.cpp
 )
 target_link_libraries(unit_tests ${GTEST_LIBRARIES} pthread)
 

@@ -3,13 +3,13 @@
 #include "io/vector_stream.hpp"
 #include "meta/bind.hpp"
 #include "meta/global_datatypes.hpp"
-#include "catenate.hpp"
-#include "drop.hpp"
+#include "pipeline/catenate.hpp"
+#include "pipeline/drop.hpp"
+#include "pipeline/iota.hpp"
+#include "pipeline/map.hpp"
+#include "pipeline/reverse.hpp"
+#include "pipeline/take.hpp"
 #include "functional.hpp"
-#include "iota.hpp"
-#include "map.hpp"
-#include "reverse.hpp"
-#include "take.hpp"
 
 int main()
 {

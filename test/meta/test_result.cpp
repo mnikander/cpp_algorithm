@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 #include "../../src/meta/global_datatypes.hpp"
 #include "../../src/meta/result.hpp"
-#include "../../src/size.hpp"
+#include "../../src/simple/size.hpp"
 
 namespace {
 
