@@ -170,3 +170,7 @@ Or make a namespace `math` which contains them as constexpr values, i.e. `math::
     - iota
     - stencil
     - roll (generate a random number in the interval)
+
+## Copyright
+
+Copyright (c) 2024, Marco Nikander

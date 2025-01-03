@@ -1,3 +1,5 @@
+// Copyright (c) 2024, Marco Nikander
+
 #include <cstdlib> // exit_success
 #include <iostream>
 #include "io/vector_stream.hpp"

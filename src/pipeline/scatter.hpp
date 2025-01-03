@@ -1,3 +1,4 @@
+// Copyright (c) 2024, Marco Nikander
 // naive implementation of 'scatter' from nvidia thrust library
 // https://nvidia.github.io/cccl/thrust/api/groups/group__scattering.html
 

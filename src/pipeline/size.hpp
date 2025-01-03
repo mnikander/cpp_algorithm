@@ -1,3 +1,5 @@
+// Copyright (c) 2024, Marco Nikander
+
 #pragma once
 
 #include <cstdint>

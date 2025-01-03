@@ -1,3 +1,5 @@
+// Copyright (c) 2024, Marco Nikander
+
 #include <gtest/gtest.h>
 #include "../src/functional.hpp"
 

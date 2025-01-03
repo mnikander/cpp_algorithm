@@ -1,3 +1,4 @@
+// Copyright (c) 2024, Marco Nikander
 // implementation of APL algorithm 'grade'
 
 #pragma once

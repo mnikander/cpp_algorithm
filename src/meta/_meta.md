@@ -32,3 +32,7 @@ typename ResultTraits<bool, Range>::Type doStuff3(Range const& range)     // ver
 Options 2 and 3 are better that 1, because they separate the concerns more strongly, whereas the ResultFactory in approach 1 ends up being quite difficult to read, even though it is not that long.
 I chose option 2 instead of 3 because it is easier to use the decltype specifier than to create and maintain a separate traits class.
 It's less code overall, and there is a single source of truth: the overloads of the `makeContainer` function.
+
+## Copyright
+
+Copyright (c) 2024, Marco Nikander

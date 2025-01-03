@@ -198,3 +198,5 @@ int dot_product = (A times B) reduce<0, add>;      // a DSL with automatic funct
 int dot_product = 0 reduce<add> (A times B);       // different syntax for accumulator of reduce -- probably the best syntax overall
 int dot_product = 0 add (A times B);               // automatic reduction, similar to automatic lifting, is problematic because we may also want to put 'plus' into a scan or some other algorithm
 ```
+
+Copyright (c) 2024, Marco Nikander

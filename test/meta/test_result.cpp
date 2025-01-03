@@ -1,3 +1,5 @@
+// Copyright (c) 2024, Marco Nikander
+
 #include <array>
 #include <vector>
 #include <gtest/gtest.h>
