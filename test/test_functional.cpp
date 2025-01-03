@@ -3,21 +3,21 @@
 
 namespace {
 
-TEST(functional, logical_not)
+TEST(functional, not)
 {
-    const auto f = nv::LogicalNot{};
+    const auto f = nv::Not{};
     EXPECT_EQ(f(false), true);
 }
 
-TEST(functional, logical_and)
+TEST(functional, and)
 {
-    const auto f = nv::LogicalAnd{};
+    const auto f = nv::And{};
     EXPECT_EQ(f(false, true), false);
 }
 
-TEST(functional, logical_or)
+TEST(functional, or)
 {
-    const auto f = nv::LogicalOr{};
+    const auto f = nv::Or{};
     EXPECT_EQ(f(false, true), true);
 }
 
