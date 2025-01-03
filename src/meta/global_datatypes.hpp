@@ -1,8 +1,7 @@
 // Copyright (c) 2024, Marco Nikander
-//! @brief Several useful datatypes which are const by default. Note these are
-//!        in the GLOBAL NAMESPACE, so only include this file if you REALLY
-//!        want to use these aliases.
-
+// Several useful datatypes which are const by default. Note these are
+// in the GLOBAL NAMESPACE, so only include this file if you REALLY
+// want to use these aliases.
 
 #pragma once
 

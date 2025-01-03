@@ -1,6 +1,4 @@
 // Copyright (c) 2024, Marco Nikander
-// naive implementation of 'gather' from nvidia thrust library
-// https://nvidia.github.io/cccl/thrust/api/groups/group__gathering.html
 
 #pragma once
 

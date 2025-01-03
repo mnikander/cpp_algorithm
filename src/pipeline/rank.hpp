@@ -1,5 +1,4 @@
 // Copyright (c) 2024, Marco Nikander
-// gives the rank of an object, note that currently only rank 0 and 1 are supported, do not use this with nested vectors
 
 #pragma once
 
