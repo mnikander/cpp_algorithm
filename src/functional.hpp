@@ -7,9 +7,9 @@
 namespace nv {
 
 // Logical operators
-struct LogicalNot   { template <typename T> T operator()(T t) const { return !t; } };
-struct LogicalAnd   { template <typename T> T operator()(T lhs, T rhs) const { return lhs && rhs; } };
-struct LogicalOr    { template <typename T> T operator()(T lhs, T rhs) const { return lhs || rhs; } };
+struct Not          { template <typename T> T operator()(T t) const { return !t; } };
+struct And          { template <typename T> T operator()(T lhs, T rhs) const { return lhs && rhs; } };
+struct Or           { template <typename T> T operator()(T lhs, T rhs) const { return lhs || rhs; } };
 
 // unary ops, which are both: (1) a tag which represents the operation and (2) the implementation of that operation
 struct Identity     { template <typename T> T operator()(T t) const { return t; } };
