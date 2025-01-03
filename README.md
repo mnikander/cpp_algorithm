@@ -20,6 +20,11 @@ cd cpp_algorithm && mkdir out && cd out && cmake .. && cd ..
 cmake --build out/ && ./out/unit_tests && ./out/main
 ```
 
+## Directory structure
+- `src/simple/  ` contains the implementations of the algorithms as functions, they are simple and can be used on their own
+- `src/pipeline/` contains function objects which serve as pipeline adapters for each of the algorithms and allow creating bash-style pipelines with the `|` operator
+- `src/meta/    ` contains several meta functions, including the implementation of the `|` operator itself
+
 # Algorithms
 
 These algorithm implementations are designed for ease-of-use, but are hard-coded to std::vector and do copy-by-value, which makes them slow.
@@ -64,13 +69,13 @@ It does allow playing around with the algorithms early on, and are a first step 
 ## Arithmetic and boolean functions
 
 ### Unary functions
-- logical_not
+- not (logical)
 - identity
 - negate
 
 ### Binary functions
-- logical_and
-- logical_or
+- and (logical)
+- or  (logical)
 - plus
 - minus
 - multiply
