@@ -101,13 +101,13 @@ TEST(map, xpr_vector)
 
 TEST(map, xpr_scalar_scalar)
 {
-    i32 result = 2 | xpr::map(xpr::plus(), 3);
+    i32 result = 2 | xpr::map(nv::Plus{}, 3);
     EXPECT_EQ(result, 5);
 }
 
 TEST(map, xpr_scalar_vector)
 {
-    vi32 result = 10 | xpr::map(xpr::plus(), xpr::iota(3));
+    vi32 result = 10 | xpr::map(nv::Plus{}, xpr::iota(3));
 
     ASSERT_EQ(size(result), 3);
     EXPECT_EQ(result[0], 10);
@@ -117,7 +117,7 @@ TEST(map, xpr_scalar_vector)
 
 TEST(map, xpr_vector_scalar)
 {
-    vi32 result = xpr::iota(3) | xpr::map(xpr::plus(), 10);
+    vi32 result = xpr::iota(3) | xpr::map(nv::Plus{}, 10);
 
     ASSERT_EQ(size(result), 3);
     EXPECT_EQ(result[0], 10);
@@ -127,7 +127,7 @@ TEST(map, xpr_vector_scalar)
 
 TEST(map, xpr_vector_vector)
 {
-    vi32 result = xpr::iota(3) | xpr::map(xpr::plus(), nv::reverse(nv::iota(3)));
+    vi32 result = xpr::iota(3) | xpr::map(nv::Plus{}, nv::reverse(nv::iota(3)));
 
     ASSERT_EQ(size(result), 3);
     EXPECT_EQ(result[0], 2);
