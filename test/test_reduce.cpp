@@ -18,19 +18,19 @@ TEST(reduce, five)
 
 TEST(reduce, xpr_add)
 {
-    i32 result = vi32{1, 2, 4, 8, 16} | xpr::reduce(xpr::plus(), 0);
+    i32 result = vi32{1, 2, 4, 8, 16} | xpr::reduce(nv::Plus{}, 0);
     EXPECT_EQ(result, 31);
 }
 
 TEST(reduce, xpr_mul)
 {
-    i32 result = vi32{1, 2, 4} | xpr::reduce(xpr::multipy(), 1);
+    i32 result = vi32{1, 2, 4} | xpr::reduce(nv::Multiply{}, 1);
     EXPECT_EQ(result, 8);
 }
 
 TEST(reduce, xpr_default_init)
 {
-    i32 result = vi32{1, 2, 4} | xpr::reduce(xpr::multipy());
+    i32 result = vi32{1, 2, 4} | xpr::reduce(nv::Multiply{});
     EXPECT_EQ(result, 8);
 }
 
